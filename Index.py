@@ -1,7 +1,7 @@
 '''
 S10192803, Dickson Kuan, 
-S10197943, Min Se Thu
-
+S10197943, Min Se Thu,
+S10185214, Ethan Leong,
 
 '''
 #Global lists and Variable 
