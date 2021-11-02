@@ -2,6 +2,7 @@
 S10192803, Dickson Kuan, 
 S10197943, Min Se Thu,
 S10185214, Ethan Leong,
+S10194816, Isaiah Low,
 
 '''
 #Global lists and Variable 
