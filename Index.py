@@ -12,38 +12,47 @@ totlaScore = 0
 Core Functions =========================================================================================================================================================
 
 '''
-
+#Feature 1.1
 def menu():
 	print("This is to print menu functions")
 	menu=["Start new game", "Load saved game", "Exit"]
 	#Step 1: Print menu options
 
-	#Step 2: Print for user inptu
+	#Step 2: Print to request for user input
 	print("Your choice?")
-def InitLoad():
-	print("To check for maze saved game")
 
-def printLayout():
-	print("To print the game layout")
+	#Step 3: Return user input
 
-def saveGame():
-	print("To save game progress into CSV File")
-
+#Feature 3
 def newGame():
 	print("To create new game map")
 
-'''
-Game Function =========================================================================================================================================================
+#Feature 4
+def saveGame():
+	print("To save game progress into CSV File")
+
+#Feature 5
+def InitLoad():
+	print("To check for maze saved game")
 
 '''
+7. Game Function =========================================================================================================================================================
+
+'''
+#Feature 7.1 
+def printLayout():
+	print("To print the game layout")
+
+#Featuer 7.2 
 def updateLocation():
 	print("To add buildings into speicfic spots")
 
+#Featuer 7.3
 def calculateScore():
 	print("Calculate total score via the number of buildings")
 
 '''
-Leaderboard Function =========================================================================================================================================================
+6. Leaderboard Function =========================================================================================================================================================
 
 '''
 def loadLeaderBoard():
@@ -69,7 +78,7 @@ def printLeaderboard():
 	#Step 2: Print leaderboard
 
 '''
-User GUI  =========================================================================================================================================================
+1. User GUI  =========================================================================================================================================================
 
 '''
 while True:
