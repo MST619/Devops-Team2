@@ -15,17 +15,17 @@ Core Functions =================================================================
 '''
 #Feature 1.1
 def menu():
-	print("This is to print menu functions")
-	menu=["Start new game", "Load saved game", "Exit"]
 	#Step 1: Print menu options
+	print("Welcome, mayor of Simp City! \n------------------------------ \n1. Start new game \n2. Load saved game \n3. Show high scores \n\n0. Exit")
 
 	#Step 2: Print to request for user input
-	print("Your choice?")
+	userInput = input("Your Choice?")
 
 	#Step 3: Return user input
+	return userInput
 
 #Feature 3
-def newGame():
+def newGame(): 
 	print("To create new game map")
 
 #Feature 4
@@ -36,10 +36,13 @@ def saveGame():
 def InitLoad():
 	print("To check for maze saved game")
 
-'''
-7. Game Function =========================================================================================================================================================
+def Exit():
+	print("Thanks for playing!")
 
 '''
+7. Game Function =========================================================================================================================================================
+'''
+
 #Feature 7.1 
 def printLayout():
 	print("To print the game layout")
@@ -83,5 +86,8 @@ def printLeaderboard():
 
 '''
 while True:
-	option = menu()
+	menuoption = menu()
 	pass
+	if menuoption == '0':
+		Exit()
+		break
