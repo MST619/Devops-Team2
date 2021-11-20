@@ -6,7 +6,10 @@ S10194816, Isaiah Low,
 S10198398, Jeremiah Long
 
 '''
-#Global lists and Variable 
+
+import random
+
+# Global lists and Variable 
 map_Layout=[]
 totlaScore = 0
 
@@ -14,21 +17,23 @@ totlaScore = 0
 Core Functions =========================================================================================================================================================
 
 '''
-#Feature 1.1
+# Feature 1.1
 def menu():
-	#Step 1: Print menu options
+	# Step 1: Print menu options
 	print("Welcome, mayor of Simp City! \n------------------------------ \n1. Start new game \n2. Load saved game \n3. Show high scores \n\n0. Exit")
 
-	#Step 2: Print to request for user input
-	userInput = input("Your Choice?")
+	# Step 2: Print to request for user input
+	userInput = input("Your Choice?\n")
 
-	#Step 3: Return user input
+	if userInput == '1':
+		userOption,board,randomBuilding1,randomBuilding2,turn,building = newGame()
+
+	# Step 3: Return user input
 	return userInput
 
 #Feature 3
 def newGame(): 
-	print("To create new game map")
-	
+	# print("To create new game map")
 	GameMap = [['','','',''],\
 				['','','',''],\
 				['','','',''],\
@@ -38,9 +43,9 @@ def newGame():
 	RandBuilding2 = random.randint(0,4)
 
 	# buildings of 8 copies each
-	buildingcopies = [['HSE',8],['FAC',8],['SHP',8],['HWY',8],['BCH',8]]
+	buildings = [['HSE',8],['FAC',8],['SHP',8],['HWY',8],['BCH',8]]
 	# building code for referencing
-	buildingcode = ['HSE','FAC','SHP','HWY','BCH']
+	buildingCode = ['HSE','FAC','SHP','HWY','BCH']
 
 	turn = 1
 	print("Turn {}".format(turn));
@@ -57,34 +62,102 @@ def newGame():
 	print(' ' + '+-----'*column + '+')
 
 	# Menu options
-	print('1. Build a {}'.format(buildingcode[RandBuilding1]), '\n', '2. Build a {}'.format(buildingcode[RandBuilding2]), '\n', '3. See remaining buildings\n','4. See current score\n\n','5. Save game\n','0. Exit to main menu')
-	userChoice = input('Your choice?')
+	print(' 1. Build a {}'.format(buildingCode[RandBuilding1]), '\n', '2. Build a {}'.format(buildingCode[RandBuilding2]), '\n', '3. See remaining buildings\n','4. See current score\n\n','5. Save game\n','0. Exit to main menu')
+	userInput = input('Your choice?\n')
 
-	#returning choice, map, building randomizer, turns and number of copies
-	return userChoice, GameMap, RandBuilding1, RandBuilding2, turn, buildingcopies
+	# returning choice, map, building randomizer, turns and number of copies
+	return userInput, GameMap, RandBuilding1, RandBuilding2, turn, buildings
 
-#Feature 4
+# Feature 4
 def saveGame():
 	print("To save game progress into CSV File")
 
-#Feature 5
+# Feature 5
 def InitLoad():
 	print("To check for maze saved game")
 
 def Exit():
-	print("Thanks for playing!")
+	GameEnd = "Thanks for playing!"
+	return GameEnd
 
 '''
 7. Game Function =========================================================================================================================================================
 '''
 
-#Feature 7.1 
-def printLayout():
-	print("To print the game layout")
+# Feature 7.1 
+def printLayout(GameMap, buildings, turn, newBuilding):
+	# print("To print the game layout")
+	check = True
+	while check:
+		validation = ["A1","A2","A3","A4","B1","B2","B3","B4","C1","C2","C3","C4","D1","D2","D3","D4"]
+		userInput = input('Build where? \n')
+		userInput.upper()
+		if userInput in validation:
+# Feature 7.2 
+	# Find user input location to place the building
+			locList = [['A',0],['B',1],['C',2],['D',3]]
+			for row in locList:
 
-#Featuer 7.2 
-def updateLocation():
-	print("To add buildings into speicfic spots")
+				if userInput[0] in row:
+					location = [int(userInput[1])-1,row[1]]
+
+					if (GameMap[location[0]] [location[1]] == ''):
+						validInput = False
+
+						if (0 <= location[0] + 1 < len(GameMap[0])):
+							if (GameMap[location[0] + 1][location[1]] != ""):
+									validInput = True
+
+						if (0 <= location[0] - 1 < len(GameMap[0])):
+							if (GameMap[location[0] - 1][location[1]] != ""):
+									validInput = True
+
+						if (0 <= location[1] + 1 < len(GameMap)):
+							if (GameMap[location[0]][location[1] + 1] != ""):
+								validInput = True
+
+						if (0 <= location[1] - 1 < len(GameMap)):
+							if (GameMap[location[0]][location[1] - 1] != ""):
+								validInput = True
+
+						if validInput == True or turn == 1:
+							GameMap[location[0]][location[1]] = newBuilding[buildings][0]
+							check = False
+						else:
+							print('You must place an existing building')
+					else:
+						print('This location already has a building, please choose another location.')
+		else:
+			print("Please provide a valid input")
+			continue
+
+	# display turns
+	turn += 1
+
+	# building randomizer
+	RandBuilding1 = random.randint(0,4)
+	RandBuilding2 = random.randint(0,4)
+
+	buildingCode = ['HSE','FAC','SHP','HWY','BCH']
+
+	newBuilding[buildings][1] -= 1
+
+	if turn <= 16:
+		print('Turn {}'.format(turn))
+		print("{:>5}{:>6}{:>6}{:>6}".format("A", "B", "C", "D"))
+		for row in range(len(GameMap)):
+			column = len(GameMap[row]) #defining the columns
+			print(' ' + '+-----'*column+'+')
+			print(row+1, end = '')
+			for line in range(len(GameMap[row])): #defining the rows
+				print('|{:^5}'.format(GameMap[row][line]), end = '')
+			print('|')
+		print(' ' + '+-----'*column + '+')
+
+		# Menu options
+		print(' 1. Build a {}'.format(buildingCode[RandBuilding1]), '\n', '2. Build a {}'.format(buildingCode[RandBuilding2]), '\n', '3. See remaining buildings\n','4. See current score\n\n','5. Save game\n','0. Exit to main menu')
+		userInput = input('Your choice?\n')
+
 
 #Featuer 7.3
 def calculateScore():
