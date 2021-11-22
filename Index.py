@@ -122,7 +122,7 @@ def printLayout(GameMap, buildings, turn, newBuilding):
 							GameMap[location[0]][location[1]] = newBuilding[buildings][0]
 							check = False
 						else:
-							print('You must place an existing building')
+							print('You must place near an existing building')
 					else:
 						print('This location already has a building, please choose another location.')
 		else:
@@ -168,6 +168,21 @@ def printLayout(GameMap, buildings, turn, newBuilding):
 		userInput = input('Your choice?\n')
 
 		return userInput,GameMap,RandBuilding1,RandBuilding1,turn,newBuilding
+
+#Feature 7.2
+def viewRemaning(newBuilding):
+	print("{:<30}{:<20}".format("Building","Remaining"))
+	print("{:<30}{:<20}".format("--------","--------"))
+	for count in range(len(newBuilding)):
+		print("{:<30}{:<20}".format(newBuilding[count][0],newBuilding[count][1]))
+
+	#Options
+	buildingCode = ['HSE','FAC','SHP','HWY','BCH']
+	RandBuilding1 = random.randint(0,4)
+	RandBuilding2 = random.randint(0,4)
+	print(' 1. Build a {}'.format(buildingCode[RandBuilding1]), '\n', '2. Build a {}'.format(buildingCode[RandBuilding2]), '\n', '3. See remaining buildings\n','4. See current score\n\n','5. Save game\n','0. Exit to main menu')
+	userInput = input('Your choice?\n')
+	return RandBuilding1, RandBuilding2, userInput
 
 #Feature 7.3
 
@@ -223,6 +238,9 @@ while True:
 
 			elif userInput == "2":
 				userInput,GameMap,RandBuilding1,RandBuilding2,turn,buildings = printLayout(GameMap,RandBuilding2,turn,buildings)
+
+			elif userInput == "3":
+				RandBuilding1, RandBuilding2, userInput = viewRemaning(buildings)
 
 			elif userInput == "0":
 				menu()
