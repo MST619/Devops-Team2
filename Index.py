@@ -167,6 +167,8 @@ def printLayout(GameMap, buildings, turn, newBuilding):
 		print(' 1. Build a {}'.format(buildingCode[RandBuilding1]), '\n', '2. Build a {}'.format(buildingCode[RandBuilding2]), '\n', '3. See remaining buildings\n','4. See current score\n\n','5. Save game\n','0. Exit to main menu')
 		userInput = input('Your choice?\n')
 
+		return userInput,GameMap,RandBuilding1,RandBuilding1,turn,newBuilding
+
 #Feature 7.3
 
 #Feature 7.4
