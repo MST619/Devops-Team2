@@ -8,8 +8,6 @@ S10198398, Jeremiah Long
 '''
 
 import random
-#from typing_extensions import TypeVarTuple
-
 # Global lists and Variable 
 map_Layout=[]
 totalScore = 0
@@ -250,3 +248,4 @@ while True:
 				print("Invalid option.")
 				userInput = input("Your Choice? ")
 				continue
+
