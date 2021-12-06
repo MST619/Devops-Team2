@@ -24,7 +24,7 @@ jobs:
       with:
         repository: 3thannn/DevOpsQA
         path: tests
-        token: ${{secrets.QA_SECRET}}
+        token: ${{secrets.QA_SECRET2}}
         
     - name: Begin Pytest
       run: |
