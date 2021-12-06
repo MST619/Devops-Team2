@@ -18,13 +18,13 @@ jobs:
     - name: Checkout Own Repo
       uses: actions/checkout@v2
       with: 
-        repository: mst619/Devops-Team2
+        repository: MST619/Devops-Team2
     - name: Checkout Test Script
       uses: actions/checkout@v2
       with:
         repository: 3thannn/DevOpsQA
         path: tests
-        token: ${{secrets.QA_SECRET2}}
+        token: ${{ secrets.QA_REPO_SECRET }}
         
     - name: Begin Pytest
       run: |
