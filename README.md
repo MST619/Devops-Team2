@@ -6,4 +6,4 @@
 4. Jeremiah - Developer,
 5. Isaiah - Developer.
 
-![Tests](https://github.com/MST619/Devops-Team2/main/.github/workflows/CI.yml/badge.svg)
+![Tests](https://github.com/MST619/Devops-Team2/actions/workflows/CI.yml/badge.svg)
