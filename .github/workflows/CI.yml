@@ -1,0 +1,50 @@
+name: CI for HelloWorld
+
+on: 
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/setup-python@v2
+      with:
+        python-version: 3.8
+    - name: Install Libraries
+      run: |
+        pip install flake8 pytest pytest-cov
+        
+    - name: Checkout Own Repo
+      uses: actions/checkout@v2
+      with: 
+        repository: mst619/Devops-Team2
+    - name: Checkout Test Script
+      uses: actions/checkout@v2
+      with:
+        repository: 3thannn/DevOpsQA
+        path: tests
+        token: ${{ secrets.QA_SECRET }}
+        
+    - name: Begin Pytest
+      run: |
+        mv ./tests/*.* ./
+        pytest --cov -v --junitxml=report.xml
+         
+    - if: ${{failure()}}       
+      name: Create Issues
+      uses: nashmaniac/create-issue-action@v1.1
+      with:
+          title: Build Failed
+          token: ${{secrets.GITHUB_TOKEN}}
+          assignees: ${{github.actor}}
+          labels: worflow-failed
+          body: Workflow failed for commit ${{github.sha}} @ ${{github.ref}}       
+
+    - name: Publish Unit Test Results
+      uses: EnricoMi/publish-unit-test-result-action@v1.24
+      if: always()
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        files: report.xml
+        
