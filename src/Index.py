@@ -85,18 +85,18 @@ def Exit():
 1. User GUI  =========================================================================================================================================================
 
 '''
+menuoption = menu()
 while True:
-	menuoption = menu()
-	pass
 	if menuoption == "0":
-		Exit()
+		exit = Exit()
+		print(exit)
 		break
 
 	if menuoption == "1":
 		userInput,GameMap,RandBuilding1,RandBuilding2,turn,buildings = newGame()
 		while True:
 			if turn > 16:
-				menu()
+				menuoption = menu()
 				break
 			if userInput == "1":
 				userInput,GameMap,RandBuilding1,RandBuilding2,turn,buildings = Game.printLayout(GameMap,RandBuilding1,turn,buildings)
@@ -108,7 +108,7 @@ while True:
 				RandBuilding1, RandBuilding2, userInput = Game.viewRemaning(buildings)
 
 			elif userInput == "0":
-				menu()
+				menuoption = menu()
 				break
 
 			else:
