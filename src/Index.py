@@ -21,13 +21,12 @@ Core Functions =================================================================
 # Feature 1.1
 def menu():
 	
-	# Step 1: Print menu options
-	#print("Welcome, mayor of Simp City! \n------------------------------ \n1. Start new game \n2. Load saved game \n3. Show high scores \n\n0. Exit")
+	#Step 1: Print menu options
+	print("Welcome, mayor of Simp City! \n------------------------------ \n1. Start new game \n2. Load saved game \n3. Show high scores \n\n0. Exit")
 
-	# Step 2: Print to request for user input
-	# menuInput = input("Your Choice?")
-	# Step 3: Return user input
-	menuInput = ""
+	#Step 2: Print to request for user input
+	menuInput = input("Your Choice?")
+	#Step 3: Return user input
 	return menuInput
 
 #Feature 3
@@ -118,6 +117,6 @@ while True:
 	
 	else:
 		print("Invalid option.")
-		userInput = input("Your Choice? ")
+		menuoption = menu()
 		continue
 
