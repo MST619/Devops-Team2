@@ -3,7 +3,7 @@ import pytest
 
 def test_Index_menu():
         result = Index.menu()
-        assert result == ''
+        assert result == ""
 
 @pytest.mark.parametrize("input, expectedResult",
 [(1, 1)])

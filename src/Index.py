@@ -8,8 +8,8 @@ S10198398, Jeremiah Long
 '''
 
 import random
-from Game import *
-from Leaderboard import *
+import Game
+
 # Global lists and Variable 
 map_Layout=[]
 totalScore = 0
@@ -20,13 +20,14 @@ Core Functions =================================================================
 '''
 # Feature 1.1
 def menu():
+	
 	# Step 1: Print menu options
-	print("Welcome, mayor of Simp City! \n------------------------------ \n1. Start new game \n2. Load saved game \n3. Show high scores \n\n0. Exit")
+	#print("Welcome, mayor of Simp City! \n------------------------------ \n1. Start new game \n2. Load saved game \n3. Show high scores \n\n0. Exit")
 
 	# Step 2: Print to request for user input
-	menuInput = input("Your Choice?\n")
-
+	# menuInput = input("Your Choice?")
 	# Step 3: Return user input
+	menuInput = ""
 	return menuInput
 
 #Feature 3
@@ -46,7 +47,7 @@ def newGame():
 	buildingCode = ['HSE','FAC','SHP','HWY','BCH']
 
 	turn = 1
-	print("Turn {}".format(turn));
+	print("Turn {}".format(turn))
 
 	# Board creation (X and Y coordinates, placing the +, - and |)
 	print("{:>5}{:>6}{:>6}{:>6}".format("A", "B", "C", "D"))
@@ -98,13 +99,13 @@ while True:
 				menu()
 				break
 			if userInput == "1":
-				userInput,GameMap,RandBuilding1,RandBuilding2,turn,buildings = printLayout(GameMap,RandBuilding1,turn,buildings)
+				userInput,GameMap,RandBuilding1,RandBuilding2,turn,buildings = Game.printLayout(GameMap,RandBuilding1,turn,buildings)
 
 			elif userInput == "2":
-				userInput,GameMap,RandBuilding1,RandBuilding2,turn,buildings = printLayout(GameMap,RandBuilding2,turn,buildings)
+				userInput,GameMap,RandBuilding1,RandBuilding2,turn,buildings = Game.printLayout(GameMap,RandBuilding2,turn,buildings)
 
 			elif userInput == "3":
-				RandBuilding1, RandBuilding2, userInput = viewRemaning(buildings)
+				RandBuilding1, RandBuilding2, userInput = Game.viewRemaning(buildings)
 
 			elif userInput == "0":
 				menu()

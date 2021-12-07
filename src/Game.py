@@ -110,3 +110,8 @@ def viewRemaning(newBuilding):
 #Feature 7.4
 def calculateScore():
 	print("Calculate total score via the number of buildings")
+	return ""
+
+def userInput():
+	x = input()
+	return x
