@@ -91,7 +91,7 @@ while True:
 		print(exit)
 		break
 
-	if menuoption == "1":
+	elif menuoption == "1":
 		userInput,GameMap,RandBuilding1,RandBuilding2,turn,buildings = newGame()
 		while True:
 			if turn > 16:
@@ -112,11 +112,15 @@ while True:
 
 			else:
 				print("Invalid option.")
-				userInput = input("Your Choice? ")
+				userInput = input("Your Choice? \n")
 				continue
-	
+
+	elif menuoption == "2":
+		print("This feature is still under development! \n") #temporary
+		menuoption = menu()
+	elif menuoption == "3":
+		print("This feature is still under development! \n") #temporary
+		menuoption = menu()
 	else:
 		print("Invalid option.")
 		menuoption = menu()
-		continue
-
