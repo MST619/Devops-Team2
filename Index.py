@@ -84,11 +84,11 @@ def Exit():
 1. User GUI  =========================================================================================================================================================
 
 '''
+menuoption = menu()
 while True:
-	menuoption = menu()
-	pass
 	if menuoption == "0":
-		Exit()
+		exit = Exit()
+		print(exit)
 		break
 
 	if menuoption == "1":
@@ -107,7 +107,7 @@ while True:
 				RandBuilding1, RandBuilding2, userInput = viewRemaning(buildings)
 
 			elif userInput == "0":
-				menu()
+				menuoption = menu()
 				break
 
 			else:
