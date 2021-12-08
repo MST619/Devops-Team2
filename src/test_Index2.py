@@ -14,12 +14,12 @@ def test_exit(capfd):
     assert\
         """Thanks for playing!"""
 
-# @pytest.mark.parametrize("input",("0"))
-# def test_MainMenuSelection(capfd,input):
-#     Index2.MainMenuSelection(input)
-#     out, _ = capfd.readouterr()
-#     assert\
-#         """Thanks for playing!"""
+@pytest.mark.parametrize("input",("0"))
+def test_MainMenuSelection(capfd,input):
+    Index2.MainMenuSelection(input)
+    out, _ = capfd.readouterr()
+    assert\
+        """Thanks for playing!"""
     
 
 def test_MainMenuSelection(capfd,monkeypatch):

@@ -24,8 +24,8 @@ def displayMainMenu():
    
 def runMainMenu():
     displayMainMenu()
-    userInput = input('Enter your option: ')
-    MainMenuSelection(userInput)
+    # userInput = input('Enter your option: ')
+    # MainMenuSelection(userInput)
 
 # Exit the game  
 def exitGame():
