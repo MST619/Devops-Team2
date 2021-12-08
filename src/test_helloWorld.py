@@ -1,4 +1,4 @@
-from src import helloWorld
+import helloWorld
 import pytest
 
 def test_helloWorld():

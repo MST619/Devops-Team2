@@ -1,4 +1,4 @@
-from src import Index
+import Index
 import pytest
 
 def test_Index_menu():

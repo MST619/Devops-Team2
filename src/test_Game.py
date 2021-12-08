@@ -1,4 +1,4 @@
-from src import Game
+import Game
 import pytest
 
 def test_Game_calculateScore():
