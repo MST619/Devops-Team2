@@ -68,4 +68,7 @@ def newGame():
             print(' ' + '+-----'*column + '+')
             print('Feature still in development!')
 # code runs here
-runMainMenu()
+try:
+    runMainMenu()
+except:
+    pass
