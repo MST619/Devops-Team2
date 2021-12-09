@@ -1,5 +1,5 @@
 import pytest
-import Index
+from src import Index
 
 def test_displayMainMenu(capfd):
     Index.displayMainMenu()
