@@ -1,5 +1,5 @@
 '''
-S10192803, Dickson Kuan, 
+S10192803, Dickson Kuan,
 S10197943, Min Se Thu,
 S10185214, Ethan Leong,
 S10194816, Isaiah Low,
@@ -17,14 +17,14 @@ MainMenuData = \
 
 def displayMainMenu():
     for i in range(len(MainMenuData)):
-            print(MainMenuData[i])
+        print(MainMenuData[i])
    
 def runMainMenu():
-    result = 1
-    while result != 0:
         displayMainMenu()
         userInput = input('Enter your option: ')
+        print("You have selected option " + userInput)
         result = MainMenuSelection(userInput)
+        return result
         
 
 # Exit the game  
@@ -36,15 +36,19 @@ def MainMenuSelection(userInput):
         if userInput == "0":
             exit = exitGame()
             print(exit)
-            return 0
+            return userInput
         elif userInput == "1":
             newGame()
+            return userInput
         elif userInput == "2":
             print("Feature still under development!", end = '')
+            return userInput
         elif userInput == "3":
             print("Feature still under development!", end = '')
+            return userInput
         else:
             print("Invalid input!", end = '')
+            return userInput
     
 
 def newGame(): 
@@ -68,4 +72,10 @@ def newGame():
             print(' ' + '+-----'*column + '+')
             print('Feature still in development!')
 # code runs here
-runMainMenu()
+def init_game():
+    loop = True
+    while loop:
+        result = runMainMenu()
+        if result == "0":
+            loop = False
+init_game()

@@ -1,5 +1,7 @@
+# pylint: disable=C0321
 import pytest
 import Index
+
 
 def test_displayMainMenu(capfd):
     Index.displayMainMenu()
@@ -13,7 +15,16 @@ def test_displayMainMenu(capfd):
     "0. Exit")\
     in out
 
-def test_exit(capfd):
+
+def test_runMainMenu(monkeypatch, capfd):
+    output = 'Enter your option\n' + 'You have selected option: 0\n' + 'Thanks for playing!'
+    with monkeypatch.context() as m:
+        m.setattr("builtins.input", lambda input: "0")
+    Index.runMainMenu()
+    out, _ = capfd.readouterr()
+    assert output in out
+
+def test_exit():
     result = Index.exitGame()
     assert result == "Thanks for playing!"
 
@@ -38,7 +49,7 @@ def test_exit(capfd):
                         ("/", "Invalid input!"),
                         (22, "Invalid input!"),
                         (-1, "Invalid input!")])
-def test_MainMenuSelection(capfd,input, expectedprint):
+def test_MainMenuSelection(capfd, input, expectedprint):
     Index.MainMenuSelection(input)
     out, _ = capfd.readouterr()
     assert expectedprint in out
