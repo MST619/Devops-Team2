@@ -6,6 +6,10 @@
 4. Jeremiah - Developer,
 5. Isaiah - Developer.
 
-test test test test telegram bot isit working
+## Release v1.0
+The first release contains the following:  
+1. A display menu feature,  
+2. A display for the game interface, and  
+3. Exit game
 
 ![Tests](https://github.com/MST619/Devops-Team2/actions/workflows/CI.yml/badge.svg)
