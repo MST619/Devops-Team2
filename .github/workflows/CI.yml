@@ -37,6 +37,7 @@ jobs:
       uses: actions/checkout@v2
       with: 
         repository: MST619/Devops-Team2
+        path: src
     - name: Checkout Test Script
       uses: actions/checkout@v2
       with:
