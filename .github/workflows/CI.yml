@@ -40,9 +40,7 @@ jobs:
     - name: Checkout Test Script
       uses: actions/checkout@v2
       with:
-        repository: 3thannn/DevOpsQA
-        path: tests
-        token: ${{ secrets.QA_REPO_SECRET }}
+        repository: MST619/Devops-Team2
     - name: Linter Check with Flake8
       run: |
         flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
