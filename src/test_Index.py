@@ -1,3 +1,4 @@
+from os import error
 import pytest
 import Index
 
@@ -12,6 +13,19 @@ def test_displayMainMenu(capfd):
     "3. Show high scores\n" +
     "0. Exit")\
     in out
+
+def test_runMainMenu(capfd, monkeypatch):
+    monkeypatch.setattr('builtins.input', lambda _: "0")
+    expected = "Welcome, mayor of Simp City!\n\
+------------------------------\n\
+1. Start new game\n\
+2. Load saved game\n\
+3. Show high scores\n\
+0. Exit\n\
+Thanks for playing!\n"
+    Index.runMainMenu()
+    out, _ = capfd.readouterr()
+    assert out == expected
 
 def test_exit(capfd):
     result = Index.exitGame()
