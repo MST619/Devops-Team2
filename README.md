@@ -6,6 +6,6 @@
 4. Jeremiah - Developer,
 5. Isaiah - Developer.
 
-test test test test telegram bot
+test test test test telegram bot isit working
 
 ![Tests](https://github.com/MST619/Devops-Team2/actions/workflows/CI.yml/badge.svg)
