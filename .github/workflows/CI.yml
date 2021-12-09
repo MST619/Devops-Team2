@@ -47,7 +47,7 @@ jobs:
     - name: Begin Pytest
       run: |
         mv ./tests/*.* ./
-        pytest --cov -v --junitxml=report.xml
+        pytest -s --cov -v --junitxml=report.xml
          
     - if: ${{failure()}}       
       name: Create Issues
