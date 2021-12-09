@@ -13,6 +13,14 @@ def test_displayMainMenu(capfd):
     "0. Exit")\
     in out
 
+def test_runMainMenu():
+    result = 1
+    while result != 0:
+        assert result == Index.displayMainMenu()
+        userInput = input("Enter your option: ")
+        result = Index.MainMenuSelection(userInput)
+        return Index.MainMenuSelection(userInput)
+        
 def test_exit(capfd):
     result = Index.exitGame()
     assert result == "Thanks for playing!"
