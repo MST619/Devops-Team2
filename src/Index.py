@@ -44,7 +44,7 @@ def MainMenuSelection(userInput):
         elif userInput == "3":
             print("Feature still under development!", end = '')
         else:
-            print("Invalid input!", end = '')
+            print("Invalid input!\n", end = '')
     
 
 def newGame(): 
