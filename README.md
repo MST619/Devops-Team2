@@ -6,8 +6,8 @@
 4. Jeremiah - Developer,
 5. Isaiah - Developer.
 
-## Release v1.0
-The first release contains the following:  
+## Release v1.1
+The first release contains the following features:  
 1. A display menu feature,  
 2. A display for the game interface, and  
 3. Exit game
