@@ -7,6 +7,8 @@ S10198398, Jeremiah Long
 
 '''
 
+import gameinit
+
 MainMenuData = \
 ['Welcome, mayor of Simp City!',
 '------------------------------',
@@ -38,7 +40,7 @@ def MainMenuSelection(userInput):
             print(exit)
             return 0
         elif userInput == "1":
-            newGame()
+            gameinit.newGame()
         elif userInput == "2":
             print("Feature still under development!\n\n", end = '')
         elif userInput == "3":
@@ -47,27 +49,6 @@ def MainMenuSelection(userInput):
             print("Invalid input!\n", end = '')
     
 
-def newGame(): 
-            # variables needed for gameplay:
-            GameMap = [['','','',''],\
-                        ['','','',''],\
-                        ['','','',''],\
-                        ['','','','']]
-            
-            turn = 1
-            print("Turn {}".format(turn))
-            # Board creation (X and Y coordinates, placing the +, - and |)
-            print("{:>5}{:>6}{:>6}{:>6}".format("A", "B", "C", "D"))
-            for row in range(len(GameMap)):
-                column = len(GameMap[row]) #defining the columns
-                print(' ' + '+-----'*column+'+')
-                print(row+1, end = '')
-                for line in range(len(GameMap[row])): #defining the rows
-                    print('|{:^5}'.format(GameMap[row][line]), end = '')
-                print('|')
-            print(' ' + '+-----'*column + '+')
-            print('Feature still in development!')
-# code runs here
 try:
     runMainMenu()
 except:
