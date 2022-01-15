@@ -57,8 +57,9 @@ def newGame():
     print("Please select Game Map size \n")
     xAxis = int(input('Enter in your desired map size width: '))
     yAxis = int(input('Enter in your desired map size height: '))
-    gameGrid(xAxis,yAxis)
+    if (xAxis * yAxis <= 40):
+        gameGrid(xAxis,yAxis)
+    else:
+        print("Grid is too big! Please keep within 40 squares")
+        newGame()
     return xAxis, yAxis
-    #Insert building pool 
-
-# code runs here
