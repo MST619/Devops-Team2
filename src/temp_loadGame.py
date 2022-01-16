@@ -18,7 +18,27 @@ def getFile(file_Name):
                 "PRK":5
             }
 
-            
+            #read file line
+            for x in file:
+                holder = x.strip('\n')
+
+                #To get turn number 
+                if turns == 0:
+                    turns = int(holder)
+                else:
+                    list.append(list(holder))
+                    #count the number of line for x and y axis
+                    x_counter += 1
+                    y_counter = len(holder)
+
+            #Checking building used
+            for x in x_counter:
+                for y in y_counter:
+                    #check if element in the building pool
+                    if list[x][y] in buildingPool:
+                        buildingPool[list[x][y]] = buildingPool[list[x][y]] - 1
+
+            return list, turns, x_counter, y_counter, buildingPool
 
         except FileNotFoundError:
             print("File not found")
