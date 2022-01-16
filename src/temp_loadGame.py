@@ -1,22 +1,24 @@
 def getFile(file_Name):
     while True:
         try:
+            # Open the file 
             file = open(file_Name)
+            # Declaring variables
             turns = 0
             list = []
-            #read file line
-            counter = 0
-            for x in file:
-                holder = x.strip('\n')
+            x_counter = 0
+            y_counter = 0 
+            buildingPool = {
+                "BCH":5, 
+                "HSE":5,
+                "SHP":5,
+                "FAC":5,
+                "HWY":5,
+                "MON":5,
+                "PRK":5
+            }
 
-                #To get turn number 
-                if counter == 0:
-                    turns = int(holder)
-                else:
-                    list.append(list(holder))
-
-                #count the number of line
-                counter += 1
+            
 
         except FileNotFoundError:
             print("File not found")
