@@ -46,7 +46,6 @@ def gameGrid(xAxis,yAxis):
     for line in gameGridList:
         print("".join(line))
 
-    print (gameGridList)
     return (gameGridList)
 
 
@@ -59,7 +58,7 @@ def newGame():
     yAxis = int(input('Enter in your desired map size height: '))
     if (xAxis * yAxis <= 40):
         gameGrid(xAxis,yAxis)
-    else:
+    elif (xAxis * yAxis > 40):
         print("Grid is too big! Please keep within 40 squares")
         newGame()
     return xAxis, yAxis
