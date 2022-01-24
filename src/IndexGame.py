@@ -77,18 +77,32 @@ def displayScore():
     #Print score
     print("Under development")
 
+def buildGameList(mapSize):
+    xCounter = yCounter = 0
+    gameMap = []
+    while mapSize[0] == xCounter:
+        while mapSize[1] == yCounter:
+            print("Under development")
+            #Append list ","
+
+    return gameMap  
+
 def buildGameMap():
+    #Build game map
     x = "1"
     y = "1"
     while checkUserInputInt(x):
         x = input("Please enter x-axis: ")
     while checkUserInputInt(y):
         y = input("Please enter y-axis: ")
-    buildingSize=[x,y] #X-axis, Y-axis
-    return buildingSize
+    #Global var: mapSize
+    mapSize=[x,y] #X-axis, Y-axis
+
+    #Build game list
+    map = buildGameList(mapSize)
 
 def newGame():
-    mapsize = buildGameMap()
+    buildGameMap()
     chooseBuildingPool()
     while True:
         randomSelectedBuildings = randomBuilding()
