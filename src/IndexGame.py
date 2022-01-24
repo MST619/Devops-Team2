@@ -20,7 +20,7 @@ buildingPool = {
                 "MON":0,
                 "PRK":0
             }
-mapSize = [0,0]
+mapSize = [0,0]  #X-axis, Y-axis
 
 # General functions
 def displayMainMenu():
@@ -77,7 +77,18 @@ def displayScore():
     #Print score
     print("Under development")
 
+def buildGameMap():
+    x = "1"
+    y = "1"
+    while checkUserInputInt(x):
+        x = input("Please enter x-axis: ")
+    while checkUserInputInt(y):
+        y = input("Please enter y-axis: ")
+    buildingSize=[x,y] #X-axis, Y-axis
+    return buildingSize
+
 def newGame():
+    mapsize = buildGameMap()
     chooseBuildingPool()
     while True:
         randomSelectedBuildings = randomBuilding()
