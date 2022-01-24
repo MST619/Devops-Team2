@@ -45,7 +45,7 @@ def displayGameMenu(turn, map, selectedBuilding):
     #display turns
     #display building remaining
     #display map
-    #display 2 randomly selected building
+    #display 2 randomly selected building via selectedBuilding
     #display game menu options
     
     print("Under development")
@@ -102,15 +102,29 @@ def buildGameMap():
     #Build game list
     map = buildGameList(mapSize)
 
-def newGame():
-    buildGameMap()
-    chooseBuildingPool()
+def saveLeaderboard():
+    #Load file and load data
+    #Save new data into list
+    #Save data into file
+    print("Under development")
+
+def playGame():
     while True:
         #Check if map is full and end the game
         randomSelectedBuildings = randomBuilding()
         displayGameMenu(turn, map, randomSelectedBuildings)
         userInput = input("Please enter option: ")
         if userInput == "0":
+            #Check if user want to save game
+            while True:
+                userInput = input("Do you want to save your progress? Y/N: ")
+                if userInput == "Y":
+                    saveLeaderboard()
+                    break
+                elif userInput == "N":
+                    break
+                else:
+                    print("Please enter a valid input")
             break
         elif checkUserInputInt(userInput):
             userInput = int(userInput)
@@ -124,18 +138,27 @@ def newGame():
     displayScore()
     #Put score into leaderboard file
 
+def newGame():
+    buildGameMap()
+    chooseBuildingPool()
+    playGame()
+
 def loadGame():
     #find and load file
     #Put the apporiate data into the global var
-    return True
+    print("Under development")
 
 #File functions
 def leaderBoard():
     #find and load file
-    #display data
-    displayScore()
+    #display leaderboard list
+    print("Under development")
 
-    return True
+def saveLeaderboard():
+    #find and load file
+    #create new file if cannot find file
+    #Save data into file
+    print("under development")
 
 # UI
 def mainMenu():
