@@ -43,6 +43,7 @@ def checkUserInputString(value): #to check if the user input is able to conver t
 #Game functions
 def displayGameMenu(turn, map, selectedBuilding):
     #display turns
+    #display building remaining
     #display map
     #display 2 randomly selected building
     #display game menu options
@@ -77,38 +78,65 @@ def displayScore():
     #Print score
     print("Under development")
 
+def buildGameList(mapSize):
+    xCounter = yCounter = 0
+    gameMap = []
+    while mapSize[0] == xCounter:
+        while mapSize[1] == yCounter:
+            print("Under development")
+            #Append list ","
+
+    return gameMap  
+
 def buildGameMap():
+    #Build game map
     x = "1"
     y = "1"
     while checkUserInputInt(x):
         x = input("Please enter x-axis: ")
     while checkUserInputInt(y):
         y = input("Please enter y-axis: ")
-    buildingSize=[x,y] #X-axis, Y-axis
-    return buildingSize
+    #Global var: mapSize
+    mapSize=[x,y] #X-axis, Y-axis
+
+    #Build game list
+    map = buildGameList(mapSize)
 
 def newGame():
-    mapsize = buildGameMap()
+    buildGameMap()
     chooseBuildingPool()
     while True:
+        #Check if map is full and end the game
         randomSelectedBuildings = randomBuilding()
         displayGameMenu(turn, map, randomSelectedBuildings)
         userInput = input("Please enter option: ")
-        if checkUserInputInt(userInput):
+        if userInput == "0":
+            break
+        elif checkUserInputInt(userInput):
             userInput = int(userInput)
             if userInput == 1 and userInput == 2:
                 buildBuildings(randomSelectedBuildings[userInput-1])
             elif userInput == 3:
-                displayScore()
-            else:
-                print("please eneter a valid input")
+                break
+        else:
+            print("please eneter a valid input")
+    #To calculate and display score
+    displayScore()
+    #Put score into leaderboard file
 
 def loadGame():
+    #find and load file
+    #Put the apporiate data into the global var
     return True
 
 #File functions
 def leaderBoard():
+    #find and load file
+    #display data
+    displayScore()
+
     return True
+
 # UI
 def mainMenu():
     while True:
