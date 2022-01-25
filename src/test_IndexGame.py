@@ -13,4 +13,3 @@ def test_defineGameMapSize(self):
     module.input = lambda: '2'
     result = IndexGame.buildGameMap()
     assert result == [1,2]
-
