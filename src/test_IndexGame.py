@@ -1,4 +1,4 @@
-import index
+import IndexGame
 import pytest
 
 def test_Game_calculateScore():
