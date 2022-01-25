@@ -89,7 +89,11 @@ def buildGameList(mapSize):
 #2.2.1 Define map game size
 def defineGameMapSize():
     #Build game map
-    
+    x = y = "x"
+    while checkUserInputInt(x) != True:
+        x = input("Please enter x-axis: ")
+    while checkUserInputInt(y) != True:
+        y = input("Please enter y-axis: ")
     #Global var: mapSize
     return [int(x),int(y)] 
 
