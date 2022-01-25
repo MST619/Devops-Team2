@@ -78,14 +78,12 @@ def displayScore():
     #Print score
     print("Under development")
 
-def buildGameList(mapSize):
-    xCounter = yCounter = 0
+#2.2.2  Create game map list
+def buildGameList(mapSize): 
     gameMap = []
-    while mapSize[0] == xCounter:
-        while mapSize[1] == yCounter:
-            print("Under development")
-            #Append list ","
-
+    for x in range(mapSize[0]):
+        holder = " " * int(mapSize[1])
+        gameMap.append(list(holder))
     return gameMap  
 
 def buildGameMap():
