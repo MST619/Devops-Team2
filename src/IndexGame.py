@@ -80,7 +80,10 @@ def displayScore():
 
 #2.2.2  Create game map list
 def buildGameList(mapSize): 
-    
+    gameMap = []
+    for x in range(mapSize[0]):
+        holder = " " * int(mapSize[1])
+        gameMap.append(list(holder))
     return gameMap  
 
 def buildGameMap():
