@@ -56,5 +56,3 @@ def test_MainMenuSelection(capfd,input, expectedprint):
     Index.MainMenuSelection(input)
     out, _ = capfd.readouterr()
     assert expectedprint in out
-    
-
