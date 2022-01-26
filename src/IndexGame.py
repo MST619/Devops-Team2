@@ -148,13 +148,22 @@ def checkFile(type):
     filename = "LoadGame.csv"
     if type == "Leaderboard":
         filename = "leaderboard.csv"
-    #Check file #3.1
     #find and load file
     try: 
-        #To open file
+        #Check game file #3.1
         df = pd.read_csv(filename)
+        counter = 0
+        while df.empty:
+            for i in open(filename):
+                #To strip the \n
+                i = i.strip("\n")
+                if counter == 0:
+                    if(checkUserInputInt(i)!= True):
+                        return False
+                counter += 1
+        return True
+
         #Return if the file is empty or not
-        return df.empty
     except FileNotFoundError:
         print("cannot find file")
         return False
