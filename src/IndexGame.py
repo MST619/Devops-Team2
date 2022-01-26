@@ -7,6 +7,7 @@ S10198398, Jeremiah Long
 
 '''
 #Imports
+from tkinter import E
 import pandas as pd
 
 # Global variables and imports
@@ -166,18 +167,43 @@ def checkFile(type):
         print("cannot find file")
         return False
 
+#Load data from file #3.2
 def loadGame():
     #Check if file exsists
     if checkFile("LoadGame"):
-        #Load data from file #3.2
+        counter = 0
+        buildingPoolDictionary ={ 
+                "BCH":0, 
+                "HSE":0,
+                "SHP":0,
+                "FAC":0,
+                "HWY":0,
+                "MON":0,
+                "PRK":0
+            }
         for x in open("LoadGame.py"):
             x= x.strip("\n")
-            if turn == 0:
+            if counter == 0:
                 turn = int(x)
-                continue
-            map.append(x.split(","))
-            
-    return mapSize, map, buildingPool, turn
+            elif counter == 1:
+                buildingPoolDictionary["BCH"] = int(x)
+            elif counter == 2:
+                buildingPoolDictionary["HSE"] = int(x)
+            elif counter == 3:
+                buildingPoolDictionary["SHP"] = int(x)
+            elif counter == 4:
+                buildingPoolDictionary["FAC"] = int(x)
+            elif counter == 5:
+                buildingPoolDictionary["HWY"] = int(x)
+            elif counter == 6:
+                buildingPoolDictionary["MON"] = int(x)
+            elif counter == 7:
+                buildingPoolDictionary["PRK"] = int(x)
+            else:
+                map.append(x.split(","))
+            mapSize[1] += 1
+        mapSize[0] = len(map[0])
+    return mapSize, map, buildingPoolDictionary, turn
 
 #File functions
 def leaderBoard():
