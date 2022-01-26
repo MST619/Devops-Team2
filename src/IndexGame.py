@@ -162,16 +162,14 @@ def checkFile(type):
                         return False
                 counter += 1
         return True
-
-        #Return if the file is empty or not
     except FileNotFoundError:
         print("cannot find file")
         return False
 
 def loadGame():
-    #Load data from file #3.2
+    
+            
     return mapSize, map, buildingPool, turn
-    print("Under development")
 
 #File functions
 def leaderBoard():

@@ -16,3 +16,8 @@ def test_CheckFile():
     assert result == expectedResult
 
 #3.2
+def test_LoadGame():
+    result = IndexGame.loadGame()
+    expectedResult = False
+
+    assert result == expectedResult
