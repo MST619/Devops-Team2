@@ -167,7 +167,15 @@ def checkFile(type):
         return False
 
 def loadGame():
-    
+    #Check if file exsists
+    if checkFile("LoadGame"):
+        #Load data from file #3.2
+        for x in open("LoadGame.py"):
+            x= x.strip("\n")
+            if turn == 0:
+                turn = int(x)
+                continue
+            map.append(x.split(","))
             
     return mapSize, map, buildingPool, turn
 
