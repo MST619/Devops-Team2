@@ -6,6 +6,8 @@ S10194816, Isaiah Low,
 S10198398, Jeremiah Long
 
 '''
+#Imports
+import pandas as pd
 
 # Global variables and imports
 turn = 0
@@ -142,11 +144,22 @@ def newGame():
     playGame()
 
 def checkFile(type):
-    
-    return 
+    #Check Type
+    filename = "LoadGame.csv"
+    if type == "Leaderboard":
+        filename = "leaderboard.csv"
+    #Check file #3.1
+    #find and load file
+    try: 
+        #To open file
+        df = pd.read_csv(filename)
+        #Return if the file is empty or not
+        return df.empty
+    except FileNotFoundError:
+        print("cannot find file")
+        return False
 
 def loadGame():
-
     #Load data from file #3.2
     return mapSize, map, buildingPool, turn
     print("Under development")
