@@ -141,9 +141,14 @@ def newGame():
     chooseBuildingPool()
     playGame()
 
+def checkFile(type):
+    
+    return 
+
 def loadGame():
-    #find and load file
-    #Put the apporiate data into the global var
+
+    #Load data from file #3.2
+    return mapSize, map, buildingPool, turn
     print("Under development")
 
 #File functions

@@ -6,3 +6,6 @@ def test_buildingGameList():
     expectedResult = [[' ', ' '], [' ', ' ']]
 
     assert result == expectedResult
+
+def test_CheckFile():
+    result = 
