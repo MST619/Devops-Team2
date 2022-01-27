@@ -7,7 +7,7 @@ S10198398, Jeremiah Long
 
 '''
 #Imports
-import pandas as pd
+#import pandas as pd
 
 # Global variables and imports
 turn = 0
@@ -151,9 +151,9 @@ def checkFile(type):
     #find and load file
     try: 
         #Check game file #3.1
-        df = pd.read_csv(filename)
+        # df = pd.read_csv(filename)
         counter = 0
-        while df.empty:
+        while True:
             for i in open(filename):
                 #To strip the \n
                 i = i.strip("\n")
