@@ -1,5 +1,5 @@
-import IndexGame
 import pytest
+import IndexGame
 
 #2.2.2
 def test_buildingGameList():
