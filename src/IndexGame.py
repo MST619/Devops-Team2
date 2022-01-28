@@ -59,8 +59,20 @@ def displayGameMenu(turn, map, selectedBuilding):
 
 def chooseBuildingPool():
     #To choose which building to build for building pool
-    choices = input("Enter the 5 building types you want: ").split(' ')
-    for choice in choices:
+    # choices = input("Enter the 5 building types you want: ").split(' ')
+    # for choice in choices:
+    #     if choice not in buildingPool:
+    #         print("Invalid input!")
+    #     else:
+    #         buildingPool[choice] = 5
+    userchoices = []
+    building1 = str(input("Please enter a desired building type (1/5): "))
+    building2 = str(input("Please enter a desired building type (2/5): "))
+    building3 = str(input("Please enter a desired building type (3/5): "))
+    building4 = str(input("Please enter a desired building type (4/5): "))
+    building5 = str(input("Please enter a desired building type (5/5): "))
+    userchoices.extend((building1, building2, building3, building4, building5))
+    for choice in userchoices:
         if choice not in buildingPool:
             print("Invalid input!")
         else:

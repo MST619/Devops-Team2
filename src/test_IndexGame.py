@@ -1,9 +1,29 @@
-import pytest
 import IndexGame
+import pytest
+from unittest.mock import Mock, patch
+
+
+
+
+
 
 #2.1
-def test_chooseBuildingPool(monkeypatch):
-    monkeypatch.setattr('builtins.input', lambda _: "BCH HSE SHP FAC MON")
+input_mock_1 = Mock()
+input_mock_1.return_value = "HSE"
+input_mock_2 = Mock()
+input_mock_2.return_value = "FAC"
+input_mock_3 = Mock()
+input_mock_3.return_value = "SHP"
+input_mock_4 = Mock()
+input_mock_4.return_value = "BCH"
+input_mock_5 = Mock()
+input_mock_5.return_value = "MON"
+
+input_mock = Mock()
+input_mock.side_effect = [input_mock_1.return_value, input_mock_2.return_value, input_mock_3.return_value, input_mock_4.return_value, input_mock_5.return_value]
+def test_chooseBuildingPool():
+    with patch('builtins.input', input_mock) as mock_method:
+        result = IndexGame.chooseBuildingPool()
     expected = { 
                 "BCH":5, 
                 "HSE":5,
@@ -13,9 +33,8 @@ def test_chooseBuildingPool(monkeypatch):
                 "MON":5,
                 "PRK":0
             }
-    result = IndexGame.chooseBuildingPool()
+    assert mock_method.call_count == 5
     assert result == expected
-
 #2.2.2
 def test_buildingGameList():
     result = IndexGame.buildGameList([2,2])
