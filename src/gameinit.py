@@ -62,3 +62,7 @@ def newGame():
         print("Grid is too big! Please keep within 40 squares")
         newGame()
     return xAxis, yAxis
+
+def buildingPool():
+    print("Please select 5 building types")
+    

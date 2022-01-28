@@ -8,6 +8,9 @@ S10198398, Jeremiah Long
 '''
 
 # Global variables and imports
+from Index import runMainMenu
+
+
 turn = 0
 map = []
 #Building pool dictionary
@@ -52,8 +55,15 @@ def displayGameMenu(turn, map, selectedBuilding):
 
 def chooseBuildingPool():
     #To choose which building to build for building pool
+    choices = input("Enter the 5 building types you want: ").split(' ')
+    for choice in choices:
+        if choice not in buildingPool:
+            print("Invalid input!")
+        else:
+            buildingPool[choice] = 5
     #Use global variable: BuildingPool Dictionary
-    print("under development")
+    print(buildingPool)
+    return buildingPool
 
 def randomBuilding():
     randomSelectedBuilding = []
@@ -78,14 +88,12 @@ def displayScore():
     #Print score
     print("Under development")
 
-def buildGameList(mapSize):
-    xCounter = yCounter = 0
+#2.2.2  Create game map list
+def buildGameList(mapSize): 
     gameMap = []
-    while mapSize[0] == xCounter:
-        while mapSize[1] == yCounter:
-            print("Under development")
-            #Append list ","
-
+    for x in range(mapSize[0]):
+        holder = " " * int(mapSize[1])
+        gameMap.append(list(holder))
     return gameMap  
 
 def buildGameMap():
@@ -179,3 +187,4 @@ def mainMenu():
                 leaderBoard()
         else: 
             print("Please enter a valid user input")
+
