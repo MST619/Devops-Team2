@@ -45,7 +45,18 @@ def runMainMenu(): # To run the main menu options
         result = MainMenuSelection(userInput)
 
 def MainMenuSelection(userInput): # To validate the user main menu options
-    return userInput
+        if userInput == "0":
+            exit = exitGame()
+            print(exit)
+            return 0
+        elif userInput == "1":
+            gameinit.newGame()
+        elif userInput == "2":
+            print("Feature still under development!\n\n", end = '')
+        elif userInput == "3":
+            print("Feature still under development!\n\n", end = '')
+        else:
+            print("Invalid input!\n", end = '')
     
 
 def exitGame(): # To exit the game once the user has entered 0
