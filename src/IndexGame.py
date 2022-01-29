@@ -13,9 +13,6 @@ import gameinit
 # #import pandas as pd
 # >>>>>>> CheckFile#3.1
 
-# Global variables and imports
-from Index import runMainMenu
-
 
 turn = 0
 map = []
