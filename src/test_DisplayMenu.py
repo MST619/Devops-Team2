@@ -46,7 +46,7 @@ def test_exit(capfd): #test exit game input
                         "4|     |     |     |     |\n" +
                         " " + "+-----+-----+-----+-----+\n" +
                         "Feature still in development!\n"),
-                        ("2","Load a new game"),
+                        ("2","Load a save file"),
                         ("3","Display Leaderboard"),
                         ("a", "Invalid input!"),
                         ("/", "Invalid input!"),

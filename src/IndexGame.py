@@ -52,7 +52,7 @@ def MainMenuSelection(userInput): # To validate the user main menu options
         elif userInput == "1":
             gameinit.newGame()
         elif userInput == "2":
-            print("Load a new game\n\n", end = '')
+            print("Load a save file\n\n", end = '')
             loadGame()
         elif userInput == "3":
             print("Display Leaderboard\n\n", end = '')
