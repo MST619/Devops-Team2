@@ -49,7 +49,8 @@ def MainMenuSelection(userInput): # To validate the user main menu options
     
 
 def exitGame(): # To exit the game once the user has entered 0
-    return True
+    GameEnd = "Thanks for playing!"
+    return GameEnd
 
 def checkUserInputInt(value): #to check if the user input is able to conver to int
     try:
