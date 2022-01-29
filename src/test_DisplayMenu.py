@@ -31,7 +31,7 @@ def test_exit(capfd): #test exit game input
     assert result == "Thanks for playing!"
     
     
-@pytest.mark.parametrize("input, expectedprint",
+@pytest.mark.parametrize("userinput, expectedprint",
                         [("0","Thanks for playing!"),
                         ("1",
                         "Turn 1\n" + 
@@ -46,14 +46,14 @@ def test_exit(capfd): #test exit game input
                         "4|     |     |     |     |\n" +
                         " " + "+-----+-----+-----+-----+\n" +
                         "Feature still in development!\n"),
-                        ("2",IndexGame.loadGame),
-                        ("3",IndexGame.leaderBoard),
+                        ("2","Load a new game"),
+                        ("3","Display Leaderboard"),
                         ("a", "Invalid input!"),
                         ("/", "Invalid input!"),
                         (22, "Invalid input!"),
                         (-1, "Invalid input!")])
 
-def test_MainMenu(capfd,input, expectedprint):
-    IndexGame.mainMenu(input)
+def test_MainMenuSelection(capfd,userinput, expectedprint):
+    IndexGame.MainMenuSelection(userinput)
     out, _ = capfd.readouterr()
     assert expectedprint in out

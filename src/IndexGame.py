@@ -52,9 +52,11 @@ def MainMenuSelection(userInput): # To validate the user main menu options
         elif userInput == "1":
             gameinit.newGame()
         elif userInput == "2":
-            print("Feature still under development!\n\n", end = '')
+            print("Load a new game\n\n", end = '')
+            loadGame()
         elif userInput == "3":
-            print("Feature still under development!\n\n", end = '')
+            print("Display Leaderboard\n\n", end = '')
+            leaderBoard()
         else:
             print("Invalid input!\n", end = '')
     
