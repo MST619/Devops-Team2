@@ -38,7 +38,11 @@ def displayMainMenu(): # To display the main menu
             print(MainMenuData[i])
    
 def runMainMenu(): # To run the main menu options
-   return True
+    result = 1
+    while result != 0:
+        displayMainMenu()
+        userInput = input('Enter your option: ')
+        result = MainMenuSelection(userInput)
 
 def MainMenuSelection(userInput): # To validate the user main menu options
     return userInput
