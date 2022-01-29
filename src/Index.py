@@ -7,6 +7,8 @@ S10198398, Jeremiah Long
 
 '''
 
+import gameinit
+
 MainMenuData = \
 ['Welcome, mayor of Simp City!',
 '------------------------------',
@@ -38,7 +40,7 @@ def MainMenuSelection(userInput):
             print(exit)
             return 0
         elif userInput == "1":
-            newGame()
+            gameinit.newGame()
         elif userInput == "2":
             print("Feature still under development!\n\n", end = '')
         elif userInput == "3":
@@ -47,6 +49,7 @@ def MainMenuSelection(userInput):
             print("Invalid input!\n", end = '')
     
 
+<<<<<<< HEAD
 def newGame(): 
             # variables needed for gameplay:
             GameMap = [['','','',''],\
@@ -248,6 +251,8 @@ def scorecalc(gameGridList):
 		
 		mon_score.append(Moncalc)
 
+=======
+>>>>>>> main
 try:
     runMainMenu()
 except:
