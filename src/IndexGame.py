@@ -12,6 +12,9 @@ S10198398, Jeremiah Long
 # >>>>>>> CheckFile#3.1
 
 # Global variables and imports
+from Index import runMainMenu
+
+
 turn = 0
 map = []
 #Building pool dictionary
@@ -56,8 +59,27 @@ def displayGameMenu(turn, map, selectedBuilding):
 
 def chooseBuildingPool():
     #To choose which building to build for building pool
+    # choices = input("Enter the 5 building types you want: ").split(' ')
+    # for choice in choices:
+    #     if choice not in buildingPool:
+    #         print("Invalid input!")
+    #     else:
+    #         buildingPool[choice] = 5
+    userchoices = []
+    building1 = str(input("Please enter a desired building type (1/5): "))
+    building2 = str(input("Please enter a desired building type (2/5): "))
+    building3 = str(input("Please enter a desired building type (3/5): "))
+    building4 = str(input("Please enter a desired building type (4/5): "))
+    building5 = str(input("Please enter a desired building type (5/5): "))
+    userchoices.extend((building1, building2, building3, building4, building5))
+    for choice in userchoices:
+        if choice not in buildingPool:
+            print("Invalid input!")
+        else:
+            buildingPool[choice] = 5
     #Use global variable: BuildingPool Dictionary
-    print("under development")
+    print(buildingPool)
+    return buildingPool
 
 def randomBuilding():
     randomSelectedBuilding = []
@@ -237,3 +259,4 @@ def mainMenu():
                 leaderBoard()
         else: 
             print("Please enter a valid user input")
+
