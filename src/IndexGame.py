@@ -24,18 +24,27 @@ buildingPool = {
             }
 mapSize = [0,0]  #X-axis, Y-axis
 
+MainMenuData = \
+['Welcome, mayor of Simp City!',
+'------------------------------',
+'1. Start new game',
+'2. Load saved game',
+'3. Show high scores\n'
+'0. Exit']
+
 # General functions
-def displayMainMenu():
-    return True
+def displayMainMenu(): # To display the main menu
+    for i in range(len(MainMenuData)):
+            print(MainMenuData[i])
    
-def runMainMenu():
+def runMainMenu(): # To run the main menu options
    return True
 
-def MainMenuSelection(userInput):
+def MainMenuSelection(userInput): # To validate the user main menu options
     return userInput
     
 
-def exitGame():
+def exitGame(): # To exit the game once the user has entered 0
     return True
 
 def checkUserInputInt(value): #to check if the user input is able to conver to int
