@@ -8,8 +8,15 @@ S10198398, Jeremiah Long
 '''
 #imports
 import gameinit
+#Imports
+# <<<<<<< LoadGameData#3.2
+# #import pandas as pd
+# >>>>>>> CheckFile#3.1
 
 # Global variables and imports
+from Index import runMainMenu
+
+
 turn = 0
 map = []
 #Building pool dictionary
@@ -91,8 +98,27 @@ def displayGameMenu(turn, map, selectedBuilding):
 
 def chooseBuildingPool():
     #To choose which building to build for building pool
+    # choices = input("Enter the 5 building types you want: ").split(' ')
+    # for choice in choices:
+    #     if choice not in buildingPool:
+    #         print("Invalid input!")
+    #     else:
+    #         buildingPool[choice] = 5
+    userchoices = []
+    building1 = str(input("Please enter a desired building type (1/5): "))
+    building2 = str(input("Please enter a desired building type (2/5): "))
+    building3 = str(input("Please enter a desired building type (3/5): "))
+    building4 = str(input("Please enter a desired building type (4/5): "))
+    building5 = str(input("Please enter a desired building type (5/5): "))
+    userchoices.extend((building1, building2, building3, building4, building5))
+    for choice in userchoices:
+        if choice not in buildingPool:
+            print("Invalid input!")
+        else:
+            buildingPool[choice] = 5
     #Use global variable: BuildingPool Dictionary
-    print("under development")
+    print(buildingPool)
+    return buildingPool
 
 def randomBuilding():
     randomSelectedBuilding = []
@@ -180,10 +206,66 @@ def newGame():
     chooseBuildingPool()
     playGame()
 
-def loadGame():
+def checkFile(type):
+    #Check Type
+    filename = "LoadGame.csv"
+    if type == "Leaderboard":
+        filename = "leaderboard.csv"
     #find and load file
-    #Put the apporiate data into the global var
-    print("Under development")
+    try: 
+        #Check game file #3.1
+        # df = pd.read_csv(filename)
+        counter = 0
+        while True:
+            for i in open(filename):
+                #To strip the \n
+                i = i.strip("\n")
+                if counter == 0:
+                    if(checkUserInputInt(i)!= True):
+                        return False
+                counter += 1
+        return True
+    except FileNotFoundError:
+        print("cannot find file")
+        return False
+
+#Load data from file #3.2
+def loadGame():
+    #Check if file exsists
+    if checkFile("LoadGame"):
+        counter = 0
+        buildingPoolDictionary ={ 
+                "BCH":0, 
+                "HSE":0,
+                "SHP":0,
+                "FAC":0,
+                "HWY":0,
+                "MON":0,
+                "PRK":0
+            }
+        for x in open("LoadGame.py"):
+            x= x.strip("\n")
+            if counter == 0:
+                turn = int(x)
+            elif counter == 1:
+                buildingPoolDictionary["BCH"] = int(x)
+            elif counter == 2:
+                buildingPoolDictionary["HSE"] = int(x)
+            elif counter == 3:
+                buildingPoolDictionary["SHP"] = int(x)
+            elif counter == 4:
+                buildingPoolDictionary["FAC"] = int(x)
+            elif counter == 5:
+                buildingPoolDictionary["HWY"] = int(x)
+            elif counter == 6:
+                buildingPoolDictionary["MON"] = int(x)
+            elif counter == 7:
+                buildingPoolDictionary["PRK"] = int(x)
+            else:
+                map.append(x.split(","))
+            mapSize[1] += 1
+        mapSize[0] = len(map[0])
+    return mapSize, map, buildingPoolDictionary, turn
 
 #File functions
 def leaderBoard():
@@ -216,3 +298,4 @@ def mainMenu():
                 leaderBoard()
         else: 
             print("Please enter a valid user input")
+
