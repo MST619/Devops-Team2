@@ -6,6 +6,8 @@ S10194816, Isaiah Low,
 S10198398, Jeremiah Long
 
 '''
+#imports
+import gameinit
 
 # Global variables and imports
 turn = 0
@@ -24,6 +26,16 @@ mapSize = [0,0]  #X-axis, Y-axis
 
 # General functions
 def displayMainMenu():
+    return True
+   
+def runMainMenu():
+   return True
+
+def MainMenuSelection(userInput):
+    return userInput
+    
+
+def exitGame():
     return True
 
 def checkUserInputInt(value): #to check if the user input is able to conver to int
