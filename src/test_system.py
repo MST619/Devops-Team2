@@ -5,6 +5,7 @@ import time
 #====================================== START OF SYSTEM BEHAVIOR TESTING ====================================
 
 def test_ExitAfterGameSetup_Pass1(monkeypatch):
+    #test_performance_1.py
     inputList = ["1","1","2","3","4","5","5","5","0","0"]
     start_time = time.time()
     print("Beginning Exit After Game Setup Test (Correct Inputs)")
@@ -22,9 +23,11 @@ def test_ExitAfterGameSetup_Pass1(monkeypatch):
     except StopIteration as e:
         print("Finished Mocking Inputs!")
         pass
-    print("Exit After Game Setup Passing Test took %s seconds to complete" % (time.time() - start_time))
-
+    timetaken = (time.time() - start_time)
+    print("Exit After Game Setup Passing Test took %s seconds to complete" %timetaken)
+    return timetaken
 def test_ExitAfterGameSetup_Fail1(monkeypatch):
+    #test_performance_2.py
     inputList = ["1",
                 "/","-1","a"," ",
                 "1","2","3","4","5",
@@ -49,9 +52,12 @@ def test_ExitAfterGameSetup_Fail1(monkeypatch):
     except StopIteration as e:
         print("Finished Mocking Inputs!")
         pass
-    print("Exit After Game Setup Failing Test took %s seconds to complete" % (time.time() - start_time))
+    timetaken = (time.time() - start_time) 
+    print("Exit After Game Setup Failing Test took %s seconds to complete" %timetaken)
+    return timetaken
 
 def test_ExitAfterGameSetup_Pass2(monkeypatch):
+    #test_performance_3.py
     inputList = ["1",
                 "1","2","3","4","5",
                 "10",
@@ -75,9 +81,12 @@ def test_ExitAfterGameSetup_Pass2(monkeypatch):
     except StopIteration as e:
         print("Finished Mocking Inputs!")
         pass
-    print("Exit After Game Setup Passing Test took %s seconds to complete" % (time.time() - start_time))
+    timetaken = (time.time() - start_time) 
+    print("Exit After Game Setup Passing Test took %s seconds to complete" %timetaken)
+    return timetaken
 
 def test_ExitAfterGameSetup_Fail2(monkeypatch):
+    #test_performance_4.py
     inputList = ["1",
                 "/","-1","a"," ","1","2","3","4","5",
                 "/","-1","a"," ","10",
@@ -101,9 +110,12 @@ def test_ExitAfterGameSetup_Fail2(monkeypatch):
     except StopIteration as e:
         print("Finished Mocking Inputs!")
         pass
-    print("Exit After Game Setup Failing Test took %s seconds to complete" % (time.time() - start_time))
+    timetaken = (time.time() - start_time) 
+    print("Exit After Game Setup Failing Test took %s seconds to complete" %timetaken)
+    return timetaken
 
 def test_ExitAfterNewGameFirstMove1_Pass(monkeypatch):
+    #test_performance_5.py
     inputList = ["1",
                 "1","2","3","4","5",
                 "5","5",
@@ -131,9 +143,12 @@ def test_ExitAfterNewGameFirstMove1_Pass(monkeypatch):
     except StopIteration as e:
         print("Finished Mocking Inputs!")
         pass
-    print("Exit After New Game First Move Passing Test took %s seconds to complete" % (time.time() - start_time))
+    timetaken = (time.time() - start_time) 
+    print("Exit After New Game First Move Passing Test took %s seconds to complete" %timetaken)
+    return timetaken
 
 def test_ExitAfterNewGameFirstMove1_Fail(monkeypatch):
+    #test_performance_6.py
     inputList = ["1",
                 "/","-1","a"," ","1","2","3","4","5",
                 "/","-1","a"," ","5",
@@ -163,10 +178,13 @@ def test_ExitAfterNewGameFirstMove1_Fail(monkeypatch):
     except StopIteration as e:
         print("Finished Mocking Inputs!")
         pass
-    print("Exit After New Game Fist Move Failing Test RandBulding1 took %s seconds to complete" % (time.time() - start_time))
+    timetaken = (time.time() - start_time) 
+    print("Exit After New Game Fist Move Failing Test RandBulding1 took %s seconds to complete" %timetaken)
+    return timetaken
 
 
 def test_ExitAfterNewGameFirstMove2_Pass(monkeypatch):
+    #test_performance_7.py
     inputList = ["1",
                 "1","2","3","4","5",
                 "5",
@@ -196,9 +214,11 @@ def test_ExitAfterNewGameFirstMove2_Pass(monkeypatch):
     except StopIteration as e:
         print("Finished Mocking Inputs!")
         pass
-    print("Exit After New Game First Move Passing Test RandBulding2 took %s seconds to complete" % (time.time() - start_time))
-
+    timetaken = (time.time() - start_time) 
+    print("Exit After New Game First Move Passing Test RandBulding2 took %s seconds to complete" %timetaken)
+    return timetaken
 def test_ExitAfterNewGameFirstMove2_Fail(monkeypatch):
+    #test_performance_8.py
     inputList = ["1",
                 "/","-1","a"," ","1","2","3","4","5",
                 "/","-1","a"," ","5",
@@ -228,10 +248,12 @@ def test_ExitAfterNewGameFirstMove2_Fail(monkeypatch):
     except StopIteration as e:
         print("Finished Mocking Inputs!")
         pass
-    print("Exit After New Game Fist Move Failing Test RandBulding2 took %s seconds to complete" % (time.time() - start_time))
-
+    timetaken = (time.time() - start_time) 
+    print("Exit After New Game Fist Move Failing Test RandBulding2 took %s seconds to complete" %timetaken)
+    return timetaken
 
 def test_PlayGameAllChooseBuilding1(monkeypatch):
+    #test_performance_9.py
     inputList =["1",
                 "1","2","3","4","5",
                 "2",
@@ -276,9 +298,12 @@ def test_PlayGameAllChooseBuilding1(monkeypatch):
     except StopIteration as e:
         print("Finished Mocking Inputs!")
         pass
-    print("Play Game Always Choose Random Building 1 Test took %s seconds to complete" % (time.time() - start_time))
+    timetaken = (time.time() - start_time) 
+    print("Play Game Always Choose Random Building 1 Test took %s seconds to complete" %timetaken)
+    return timetaken
 
 def test_PlayGameAllChooseBuilding2(monkeypatch):
+    #test_performance_10.py
     inputList =["1",
                 "1","2","3","4","5",
                 "2",
@@ -323,9 +348,12 @@ def test_PlayGameAllChooseBuilding2(monkeypatch):
     except StopIteration as e:
         print("Finished Mocking Inputs!")
         pass
-    print("Play Game Always Choose Random Building 2 Test took %s seconds to complete" % (time.time() - start_time))
+    timetaken = (time.time() - start_time)
+    print("Play Game Always Choose Random Building 2 Test took %s seconds to complete" %timetaken)
+    return timetaken
 
 def test_ExitAfterLoadGame_Pass(monkeypatch):
+    #test_performance_11.py
     inputList = ["2",
                 "2",
                 "0",
@@ -344,9 +372,11 @@ def test_ExitAfterLoadGame_Pass(monkeypatch):
     except StopIteration as e:
         print("Finished Mocking Inputs!")
         pass
-    print("Exit After Load Gamefile Test took %s seconds to complete" % (time.time() - start_time))
+    timetaken = (time.time() - start_time) 
+    print("Exit After Load Gamefile Test took %s seconds to complete" %timetaken)
 
 def test_LoadGameAfterLoadGame(monkeypatch):
+    #test_performance12.py
     inputList = ["2",
                 "2",
                 "0",
@@ -365,11 +395,13 @@ def test_LoadGameAfterLoadGame(monkeypatch):
     except StopIteration as e:
         print("Finished Mocking Inputs!")
         pass
-    print("Reload loaded gamefile after exiting loaded game Test took %s seconds to complete" % (time.time() - start_time))
-
+    timetaken = (time.time() - start_time) 
+    print("Reload loaded gamefile after exiting loaded game Test took %s seconds to complete" %timetaken)
+    return timetaken
 
 
 def test_SaveNewGameAndLoadGame(monkeypatch):
+    #test_performance_13.py
     inputList = ["1",
                 "1","2","3","4","5",
                 "5",
@@ -405,9 +437,11 @@ def test_SaveNewGameAndLoadGame(monkeypatch):
     except StopIteration as e:
         print("Finished Mocking Inputs!")
         pass
-    print("Load Game Saved New Game Test took %s seconds to complete" % (time.time() - start_time))
-
+    timetaken = (time.time() - start_time) 
+    print("Load Game Saved New Game Test took %s seconds to complete" %timetaken)
+    return timetaken
 def test_SaveNewGameAndFinishLoadedGame1(monkeypatch):
+    #test_performance_14.py
     inputList = ["1",                   # Select Main Menu Option 1 -> Start new game
                 "1","2","3","4","5",    # Choose Building Pool [Correct  Inputs:(1,2,3,4,5)]
                 "3",                    # Choose Grid Size X-Axis [Correct Input:(5)]
@@ -443,7 +477,7 @@ def test_SaveNewGameAndFinishLoadedGame1(monkeypatch):
                 "3",                    # Choose Y axis for building [Correct Input: 3]
                 ]                    
     start_time = time.time()
-    print("Beginning Save New Game And Load Saved Game Test")    
+    print("Beginning Save New Game And Finish Loaded Saved Game Test (Random Building 1)")    
     try:
             inputs = iter(inputList)
             #Iterate through predefined inputs
@@ -453,6 +487,59 @@ def test_SaveNewGameAndFinishLoadedGame1(monkeypatch):
     except StopIteration as e:
         print("Finished Mocking Inputs!")
         pass
-    print("Finish Load Saved New Gamefile Test took %s seconds to complete" % (time.time() - start_time))
+    timetaken = (time.time() - start_time) 
+    print("Finish Save New Game And Finish Loaded Saved Game (Random Building 1) Test took %s seconds to complete" %timetaken)
+    return timetaken
+
+def test_SaveNewGameAndFinishLoadedGame2(monkeypatch):
+    #test_performance_15.py
+    inputList = ["1",                   # Select Main Menu Option 1 -> Start new game
+                "1","2","3","4","5",    # Choose Building Pool [Correct  Inputs:(1,2,3,4,5)]
+                "3",                    # Choose Grid Size X-Axis [Correct Input:(5)]
+                "3",                    # Choose Grid Size Y-Axis [Correct Input:(5)]
+                "1",                    # Choose Place Random Building 2 [Correct Input: 2]
+                "1",                    # Choose X axis for building [Correct Input: 1]
+                "1",                    # Choose Y axis for building [Correct Input: 1]
+                "1",                    # Choose Place Random Building 2 [Correct Input: 2]
+                "2",                    # Choose X axis for building [Correct Input: 2]
+                "1",                    # Choose Y axis for building [Correct Input: 1]
+                "1",                    # Choose save game [Correct Input: 3]
+                "3",                    # Choose Main Menu Option 2 -> Load Game
+                "1",                    # Choose Place Random Building 2 [Correct Input: 2]
+                "3",                    # Choose X axis for building [Correct Input: 3]
+                "1",                    # Choose Y axis for building [Correct Input: 1]
+                "1",                    # Choose Place Random Building 2 [Correct Input: 2]
+                "1",                     # Choose X axis for building [Correct Input: 1]
+                "2",                    # Choose Y axis for building [Correct Input: 2]
+                "1",                    # Choose Place Random Building 2 [Correct Input: 2]
+                "2",                    # Choose X axis for building [Correct Input: 2]
+                "2",                    # Choose Y axis for building [Correct Input: 2]
+                "1",                    # Choose Place Random Building 2 [Correct Input: 2]
+                "3",                    # Choose X axis for building [Correct Input: 3]
+                "2",                    # Choose Y axis for building [Correct Input: 2]
+                "1",                    # Choose Place Random Building 2 [Correct Input: 2]
+                "1",                    # Choose X axis for building [Correct Input: 1]
+                "3",                    # Choose Y axis for building [Correct Input: 3]
+                "1",                    # Choose Place Random Building 2 [Correct Input: 2]
+                "2",                    # Choose X axis for building [Correct Input: 2]
+                "3",                    # Choose Y axis for building [Correct Input: 3]
+                "1",                    # Choose Place Random Building 2 [Correct Input: 2]
+                "3",                    # Choose X axis for building [Correct Input: 3]
+                "3",                    # Choose Y axis for building [Correct Input: 3]
+                ]                    
+    start_time = time.time()
+    print("Beginning Save New Game And Finish Loaded Saved Game Test (Random Building 2)")    
+    try:
+            inputs = iter(inputList)
+            #Iterate through predefined inputs
+            monkeypatch.setattr('builtins.input', lambda _: next(inputs))
+            #Run the game code
+            import IndexGame
+    except StopIteration as e:
+        print("Finished Mocking Inputs!")
+        pass
+    timetaken = (time.time() - start_time) 
+    print("Finish Save New Game And Finish Loaded Saved Game (Random Building 2) Test took %s seconds to complete" %timetaken)
+    return timetaken
 
 
