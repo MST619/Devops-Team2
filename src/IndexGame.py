@@ -296,3 +296,7 @@ def mainMenu():
         else: 
             print("Please enter a valid user input")
 
+try:
+    runMainMenu()
+except:
+    pass
