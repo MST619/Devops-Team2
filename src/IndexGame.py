@@ -6,8 +6,6 @@ S10194816, Isaiah Low,
 S10198398, Jeremiah Long
 
 '''
-#imports
-import gameinit
 #Imports
 # <<<<<<< LoadGameData#3.2
 # #import pandas as pd
@@ -54,7 +52,7 @@ def MainMenuSelection(userInput): # To validate the user main menu options
             print(exit)
             return 0
         elif userInput == "1":
-            gameinit.newGame()
+            newGame()
         elif userInput == "2":
             print("Load a save file\n\n", end = '')
             loadGame()
