@@ -1,8 +1,7 @@
+from _pytest.monkeypatch import monkeypatch
 import IndexGame
 import pytest
 from unittest.mock import Mock, patch
-
-
 
 
 
@@ -55,3 +54,15 @@ def test_LoadGame():
     expectedResult = False
 
     assert result == expectedResult
+
+#4.2.2
+# def test_buildBuildings(monkeypatch):
+#     monkeypatch.setattr('builtins.input', lambda _: "A1")
+#     result = IndexGame.buildBuildings("BCH")
+map = [[' ', ' '], [' ', ' ']]
+@pytest.mark.parametrize("building, expected", [("BCH", "[['BCH', ' '], [' ', ' ']]")])
+def test_buildBuildings(building, expected, monkeypatch):
+    monkeypatch.setattr('builtins.input', lambda _: 'A1')
+    result = IndexGame.buildBuildings(building)
+    assert result == expected
+    

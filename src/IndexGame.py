@@ -88,8 +88,9 @@ def randomBuilding():
 
 def buildBuildings(selectedBuilding):
     #Use global variable: Map
+
     #Update building location in the map
-    print("Under development")
+    return map
 
 def calculateScore():
     #Use global varibale: Building Pool
