@@ -141,39 +141,21 @@ def positionCheck(map, input):
     else:
         return False
 
+def deductBuildingPool(buildingPool, selectedBuilding):
+    buildingPool[selectedBuilding] -= 1
+    return buildingPool
 
 
 map = [['',''],['','']]
-def buildBuildings(selectedBuilding):
-    while True:
+def buildBuildings(map, selectedBuilding, buildingPool, input, turn):
     #Use global variable: Map
-        locationInput = input("Where do you want to build this building?: ")
-        lettercoor = locationInput[0]
-        numbercoor = locationInput[1:]
+    updateRow = 0
+    updateColumn = 0
 
-        column = columnmapping[lettercoor]
-        row = numbercoor-1
-        for rowelement in map:
-            if column in rowelement:
-                if (map[row][column] == ''):
-                    Valid = False
-                    if (0 <= row + 1 < len(map[0])):
-                        if (map[row + 1][column] != ""):
-                            Valid = True
-                    if (0 <= row - 1 < len(map[0])):
-                        if (map[row- 1][column] != ""):
-                            Valid = True
-                    if (0 <= column + 1 < len(map)):
-                        if (map[row][column + 1] != ""):
-                            Valid = True
-                    if (0 <= column - 1 < len(map)):
-                        if (map[row][column - 1] != ""):
-                            Valid = True
+    
 
-                    if Valid == True or turn == 1:
-                        map[row][column] = selectedBuilding
     #Update building location in the map
-        return map
+
 
 def calculateScore():
     #Use global varibale: Building Pool

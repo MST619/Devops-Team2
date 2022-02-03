@@ -1,3 +1,4 @@
+from unittest import mock
 from _pytest.monkeypatch import monkeypatch
 import IndexGame
 import pytest
@@ -60,12 +61,31 @@ def test_LoadGame():
 #     monkeypatch.setattr('builtins.input', lambda _: "A1")
 #     result = IndexGame.buildBuildings("BCH")
 map = [[' ', ' '], [' ', ' ']]
-@pytest.mark.parametrize("map, input, expected", [(map, "A1", True), 
-                                                    (map, "C3", False)])
+@pytest.mark.parametrize("map, input, expected", [(map, "A1", True), (map, "C3", False)])
 def test_positionCheck(map, input, expected):
     result = IndexGame.positionCheck(map, input)
     assert result == expected
 
+@pytest.mark.parametrize("buildingPool, selectedBuildings, expected", [({
+                "BCH":5, 
+                "HSE":5,
+                "SHP":5,
+                "FAC":5,
+                "HWY":0,
+                "MON":5,
+                "PRK":0
+            }, "BCH", { 
+                "BCH":4, 
+                "HSE":5,
+                "SHP":5,
+                "FAC":5,
+                "HWY":0,
+                "MON":5,
+                "PRK":0
+            })])
+def test_deductBuildingPool(buildingPool, selectedBuildings, expected):
+    result = IndexGame.deductBuildingPool(buildingPool, selectedBuildings)
+    assert result == expected
 
 @pytest.mark.parametrize("building, expected", [("BCH", [['BCH', ' '], [' ', ' ']])])
 def test_buildBuildings(building, expected, monkeypatch):
