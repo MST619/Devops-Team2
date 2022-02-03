@@ -60,7 +60,8 @@ def test_LoadGame():
 #     monkeypatch.setattr('builtins.input', lambda _: "A1")
 #     result = IndexGame.buildBuildings("BCH")
 map = [[' ', ' '], [' ', ' ']]
-@pytest.mark.parametrize("map, input, expected", [(map, "A1", True)])
+@pytest.mark.parametrize("map, input, expected", [(map, "A1", True), 
+                                                    (map, "C3", False)])
 def test_positionCheck(map, input, expected):
     result = IndexGame.positionCheck(map, input)
     assert result == expected
