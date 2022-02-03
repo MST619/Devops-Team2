@@ -27,6 +27,8 @@ buildingPool = {
                 "MON":0,
                 "PRK":0
             }
+
+
 mapSize = [0,0]  #X-axis, Y-axis
 
 # General functions
@@ -86,11 +88,39 @@ def randomBuilding():
     #Return selected building in a list
     return randomSelectedBuilding
 
-def buildBuildings(selectedBuilding):
-    #Use global variable: Map
 
+
+map = [['',''],['','']]
+def buildBuildings(selectedBuilding):
+    while True:
+    #Use global variable: Map
+        locationInput = input("Where do you want to build this building?: ")
+        lettercoor = locationInput[0]
+        numbercoor = locationInput[1:]
+
+        column = columnmapping[lettercoor]
+        row = numbercoor-1
+        for rowelement in map:
+            if column in rowelement:
+                if (map[row][column] == ''):
+                    Valid = False
+                    if (0 <= row + 1 < len(map[0])):
+                        if (map[row + 1][column] != ""):
+                            Valid = True
+                    if (0 <= row - 1 < len(map[0])):
+                        if (map[row- 1][column] != ""):
+                            Valid = True
+                    if (0 <= column + 1 < len(map)):
+                        if (map[row][column + 1] != ""):
+                            Valid = True
+                    if (0 <= column - 1 < len(map)):
+                        if (map[row][column - 1] != ""):
+                            Valid = True
+
+                    if Valid == True or turn == 1:
+                        map[row][column] = selectedBuilding
     #Update building location in the map
-    return map
+        return map
 
 def calculateScore():
     #Use global varibale: Building Pool
