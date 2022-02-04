@@ -119,6 +119,7 @@ def positionCheck(map, input):
     letter = False
     number = False
 
+    
     if len(input) <= 3:
         lettercoor = input[0].upper()
         numbercoor = input[1:]
@@ -140,7 +141,7 @@ def positionCheck(map, input):
         return True
     else:
         return False
-        
+
 def emptyCheck(map, rowinput, columninput):
     coorcheck = False
     column = columnmapping[columninput]
@@ -162,23 +163,34 @@ def deductBuildingPool(buildingPool, selectedBuilding):
     return buildingPool
 
 
-map = [[' ',' '],[' ',' ']]
-def buildBuildings(map, selectedBuilding, buildingPool, input, turn):
+def buildBuildings(map, selectedBuilding, buildingPool, turn, input):
     #Use global variable: Map
     updateRow = 0
     updateColumn = 0
     coordinates = []
 
     if positionCheck(map, input) == True:
-        coordinates.append(input[0], input[1:])
+        coordinates.append(input[0])
+        coordinates.append(input[1:])
         updateRow = coordinates[0]
         updateColumn = coordinates[1:]
 
-    # if updateRow != 0 and updateColumn != 0:
-    #     if turn 
-
-    
-
+    if updateRow != 0 and updateColumn != 0:
+        if turn == 1:
+            map[updateRow][updateColumn-1] = selectedBuilding[0]
+            map[updateRow][updateColumn] = selectedBuilding[1]
+            map[updateRow][updateColumn+1] = selectedBuilding[2]
+            turn += 1
+            buildingPool.deductBuildingPool(buildingPool, selectedBuilding)
+        
+        else:
+            if emptyCheck(map, updateRow, updateColumn) == True:
+                map[updateRow][updateColumn-1] = selectedBuilding[0]
+                map[updateRow][updateColumn] = selectedBuilding[1]
+                map[updateRow][updateColumn+1] = selectedBuilding[2]
+                turn += 1
+                buildingPool.deductBuildingPool(buildingPool, selectedBuilding)
+    return map
     #Update building location in the map
 
 

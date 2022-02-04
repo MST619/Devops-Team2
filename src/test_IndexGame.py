@@ -92,9 +92,17 @@ def test_deductBuildingPool(buildingPool, selectedBuildings, expected):
     result = IndexGame.deductBuildingPool(buildingPool, selectedBuildings)
     assert result == expected
 
-@pytest.mark.parametrize("building, expected", [("BCH", [['BCH', ' '], [' ', ' ']])])
-def test_buildBuildings(building, expected, monkeypatch):
+@pytest.mark.parametrize("map, selectedBuilding, buildingPool, turn, input, expected", [(map, "BCH", {
+                "BCH":5, 
+                "HSE":5,
+                "SHP":5,
+                "FAC":5,
+                "HWY":0,
+                "MON":5,
+                "PRK":0
+            }, 1, "A1", [['BCH', ' '], [' ', ' ']])])
+def test_buildBuildings(map, selectedBuilding, buildingPool, turn, input, expected, monkeypatch):
     monkeypatch.setattr('builtins.input', lambda _: 'A1')
-    result = IndexGame.buildBuildings(building)
+    result = IndexGame.buildBuildings(map, selectedBuilding, buildingPool, turn, input)
     assert result == expected
     
