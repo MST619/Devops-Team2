@@ -140,8 +140,22 @@ def positionCheck(map, input):
         return True
     else:
         return False
-
-            
+        
+def emptyCheck(map, rowinput, columninput):
+    coorcheck = False
+    column = columnmapping[columninput]
+    for eachrow in map:
+        if map.index(eachrow) == rowinput-1:
+            for rowcoor in eachrow:
+                if eachrow.index(rowcoor) == column-1:
+                    if rowcoor == " ":
+                        coorcheck = True
+                    else:
+                        print("Space is taken, please enter another input")
+    if coorcheck == True:
+        return True
+    else:
+        return False
 
 def deductBuildingPool(buildingPool, selectedBuilding):
     buildingPool[selectedBuilding] -= 1
