@@ -141,16 +141,27 @@ def positionCheck(map, input):
     else:
         return False
 
+            
+
 def deductBuildingPool(buildingPool, selectedBuilding):
     buildingPool[selectedBuilding] -= 1
     return buildingPool
 
 
-map = [['',''],['','']]
+map = [[' ',' '],[' ',' ']]
 def buildBuildings(map, selectedBuilding, buildingPool, input, turn):
     #Use global variable: Map
     updateRow = 0
     updateColumn = 0
+    coordinates = []
+
+    if positionCheck(map, input) == True:
+        coordinates.append(input[0], input[1:])
+        updateRow = coordinates[0]
+        updateColumn = coordinates[1:]
+
+    # if updateRow != 0 and updateColumn != 0:
+    #     if turn 
 
     
 

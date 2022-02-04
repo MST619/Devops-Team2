@@ -66,6 +66,11 @@ def test_positionCheck(map, input, expected):
     result = IndexGame.positionCheck(map, input)
     assert result == expected
 
+@pytest.mark.parametrize("map, row, column, expected", [(map, 1, "A", True)])
+def test_emptyCheck(map, row, column, expected):
+    result = IndexGame.emptyCheck(map, row, column)
+    assert result == expected
+
 @pytest.mark.parametrize("buildingPool, selectedBuildings, expected", [({
                 "BCH":5, 
                 "HSE":5,
