@@ -172,24 +172,22 @@ def buildBuildings(map, selectedBuilding, buildingPool, turn, input):
     if positionCheck(map, input) == True:
         coordinates.append(input[0])
         coordinates.append(input[1:])
-        updateRow = coordinates[0]
-        updateColumn = coordinates[1:]
+        updateColumn = columnmapping[coordinates[0].upper()]
+        updateRow = int(coordinates[1])
+
 
     if updateRow != 0 and updateColumn != 0:
         if turn == 1:
-            map[updateRow][updateColumn-1] = selectedBuilding[0]
-            map[updateRow][updateColumn] = selectedBuilding[1]
-            map[updateRow][updateColumn+1] = selectedBuilding[2]
+            map[updateRow-1][updateColumn-1] = selectedBuilding
             turn += 1
-            buildingPool.deductBuildingPool(buildingPool, selectedBuilding)
+            deductBuildingPool(buildingPool, selectedBuilding)
         
         else:
             if emptyCheck(map, updateRow, updateColumn) == True:
-                map[updateRow][updateColumn-1] = selectedBuilding[0]
-                map[updateRow][updateColumn] = selectedBuilding[1]
-                map[updateRow][updateColumn+1] = selectedBuilding[2]
+                map[updateRow-1][updateColumn-1] = selectedBuilding
                 turn += 1
-                buildingPool.deductBuildingPool(buildingPool, selectedBuilding)
+                deductBuildingPool(buildingPool, selectedBuilding)
+                
     return map
     #Update building location in the map
 
