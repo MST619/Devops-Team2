@@ -2,6 +2,8 @@ import IndexGame
 import pytest
 from unittest.mock import Mock, patch
 
+from gameinit import buildingPool
+
 
 
 
@@ -54,4 +56,18 @@ def test_LoadGame():
     result = IndexGame.loadGame()
     expectedResult = False
 
+    assert result == expectedResult
+
+#4.1.1
+def test_remainingBuildings():
+    result = IndexGame.remainingBuildings()
+    expectedResult = { 
+                "BCH":5, 
+                "HSE":5,
+                "SHP":5,
+                "FAC":5,
+                "HWY":0,
+                "MON":5,
+                "PRK":0
+            }
     assert result == expectedResult
