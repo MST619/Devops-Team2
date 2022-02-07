@@ -91,7 +91,6 @@ def buildBuildings(selectedBuilding):
     #Update building location in the map
     print("Under development")
 
-
 def bchcalc(map, bch_score):
 #part for BCH calculation
     for xinput in range(len(map)):

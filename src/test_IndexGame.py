@@ -72,6 +72,8 @@ def test_bchcalc():
     expected = 6
     assert result == expected
 
+
+
 def test_displayscore():
     result = IndexGame.displayScore()
     expectedResult = False
