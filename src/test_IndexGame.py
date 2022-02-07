@@ -72,7 +72,10 @@ def test_bchcalc():
     expected = 6
     assert result == expected
 
-
+def test_faccalc():
+    result = IndexGame.faccalc([['FAC', 'FAC'], [' ', ' ']], 0)
+    expected = 4
+    assert result == expected
 
 def test_displayscore():
     result = IndexGame.displayScore()
