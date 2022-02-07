@@ -91,6 +91,13 @@ def test_hsecalc(map, hsescore, expected):
     result = IndexGame.hsecalc(map, hsescore)
     assert result == expected
 
+@pytest.mark.parametrize('map, shpscore, expected', [([['SHP', 'SHP'],['FAC', 'HSE']], [], 4),
+                                            ([['SHP', 'FAC'], ['FAC', ' ']], [], 1),
+                                            ([['SHP', 'FAC', ' '], ['BCH', 'SHP', 'HSE']], [], 5),
+                                            ([['FAC', 'HSE', ' '], ['BCH', 'SHP', 'HWY'], [' ', 'FAC', ' ']], [], 4)])
+def test_shpcalc(map, shpscore, expected):
+    result = IndexGame.faccalc(map, shpscore)
+    assert result == expected
 
 def test_displayscore():
     result = IndexGame.displayScore()

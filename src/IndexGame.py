@@ -134,7 +134,7 @@ def hsecalc(map, hse_score):
     for xinput in range(len(map)):
         for yinput in range((len(map[xinput]))):
             if map[xinput][yinput] == "HSE":
-                if (any(0 <= yinput + dyinput <= range(len(map)) and 0 <= xinput + dxinput <= range(len(map[0])) \
+                if (any(0 <= yinput + dyinput <= len(map) and 0 <= xinput + dxinput <= len(map[0]) \
                 and map[xinput + dxinput][yinput + dyinput] == "FAC" \
                 for dxinput, dyinput in ((-1, 0), (0,1), (1,0), (0,-1)))):
                     hse_score.append(1)
@@ -163,7 +163,13 @@ def hsecalc(map, hse_score):
     hse_score_num = sum(hse_score)
     return hse_score_num
 
-
+def shpcalc(map, shp_score):
+    for xinput in range(len(map)):
+        for yinput in range(len(map)):
+            if map[xinput][yinput] == "SHP":
+                SHPgridList = (list(map[xinput + dxinput][yinput + dyinput]\
+                for dxinput, dyinput in ((-1,0), (0,1), (1,0), (0,-1))))
+                shp_score += len(set(SHPgridList))
 
     
 def calculateScore():
