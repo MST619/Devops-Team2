@@ -50,11 +50,11 @@ jobs:
         cd src
         pytest -s --cov -v --junitxml=report.xml
     - name: Sent message to Teams about Push event
-      - uses: ./
-        if: always()
-        with:
-          github-token: ${{ github.token }}
-          webhook-uri: ${{ secrets.MSTEAMS_WEBHOOK }}
+      uses: ./
+      if: always()
+      with:
+        github-token: ${{ github.token }}
+        webhook-uri: ${{ secrets.MSTEAMS_WEBHOOK }}
     - if: ${{failure()}}       
       name: Create Issues
       uses: nashmaniac/create-issue-action@v1.1
