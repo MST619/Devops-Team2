@@ -7,7 +7,7 @@ jobs:
   release-on-push:
     runs-on: ubuntu-latest
     env:
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      GITHUB_TOKEN: ${{ secrets.DEVOPSMSTEAMSCI }}
     steps:
       - id: release
         uses: MST619/Devops-Team2@master
