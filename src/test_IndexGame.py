@@ -1,7 +1,11 @@
+from unittest import mock
+from _pytest.monkeypatch import monkeypatch
 import IndexGame
 import pytest
 from unittest.mock import Mock, patch
-from gameinit import buildingPool
+
+
+
 
 #2.1
 input_mock_1 = Mock()
@@ -21,12 +25,12 @@ def test_chooseBuildingPool():
     with patch('builtins.input', input_mock) as mock_method:
         result = IndexGame.chooseBuildingPool()
     expected = { 
-                "BCH":5, 
-                "HSE":5,
-                "SHP":5,
-                "FAC":5,
+                "BCH":8, 
+                "HSE":8,
+                "SHP":8,
+                "FAC":8,
                 "HWY":0,
-                "MON":5,
+                "MON":8,
                 "PRK":0
             }
     assert mock_method.call_count == 5
@@ -52,16 +56,50 @@ def test_LoadGame():
 
     assert result == expectedResult
 
-#4.1.1
-def test_remainingBuildings():
-    result = IndexGame.remainingBuildings()
-    expectedResult = { 
-                "BCH":5, 
-                "HSE":5,
-                "SHP":5,
-                "FAC":5,
+#4.2.2
+map = [[' ', ' '], [' ', ' ']]
+@pytest.mark.parametrize("map, input, expected", [(map, "A1", True), (map, "C3", False)])
+def test_positionCheck(map, input, expected):
+    result = IndexGame.positionCheck(map, input)
+    assert result == expected
+
+@pytest.mark.parametrize("map, row, column, expected", [(map, 1, "A", True)])
+def test_emptyCheck(map, row, column, expected):
+    result = IndexGame.emptyCheck(map, row, column)
+    assert result == expected
+
+@pytest.mark.parametrize("buildingPool, selectedBuildings, expected", [({
+                "BCH":8, 
+                "HSE":8,
+                "SHP":8,
+                "FAC":8,
                 "HWY":0,
-                "MON":5,
+                "MON":8,
                 "PRK":0
-            }
-    assert result == expectedResult
+            }, "BCH", { 
+                "BCH":7, 
+                "HSE":8,
+                "SHP":8,
+                "FAC":8,
+                "HWY":0,
+                "MON":8,
+                "PRK":0
+            })])
+def test_deductBuildingPool(buildingPool, selectedBuildings, expected):
+    result = IndexGame.deductBuildingPool(buildingPool, selectedBuildings)
+    assert result == expected
+
+@pytest.mark.parametrize("map, selectedBuilding, buildingPool, turn, input, expected", [(map, "BCH", {
+                "BCH":8, 
+                "HSE":8,
+                "SHP":8,
+                "FAC":8,
+                "HWY":0,
+                "MON":8,
+                "PRK":0
+            }, 1, "A1", [['BCH', ' '], [' ', ' ']])])
+def test_buildBuildings(map, selectedBuilding, buildingPool, turn, input, expected, monkeypatch):
+    monkeypatch.setattr('builtins.input', lambda _: 'A1')
+    result = IndexGame.buildBuildings(map, selectedBuilding, buildingPool, turn, input)
+    assert result == expected
+    
