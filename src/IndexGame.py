@@ -129,6 +129,42 @@ def faccalc(map, fac_score):
 
     fac_score_num = sum(fac_score)
     return fac_score_num
+
+def hsecalc(map, hse_score):
+    for xinput in range(len(map)):
+        for yinput in range((len(map[xinput]))):
+            if map[xinput][yinput] == "HSE":
+                if (any(0 <= yinput + dyinput <= range(len(map)) and 0 <= xinput + dxinput <= range(len(map[0])) \
+                and map[xinput + dxinput][yinput + dyinput] == "FAC" \
+                for dxinput, dyinput in ((-1, 0), (0,1), (1,0), (0,-1)))):
+                    hse_score.append(1)
+
+                if (any(0 <= yinput + dyinput <= len(map) and 0 <= xinput + dxinput <= len(map[0]) \
+                and map[xinput + dxinput][yinput + dyinput] \
+                for dxinput, dyinput in ((-1, 0), (0,1), (1,0), (0,-1)))):
+                    gridList = []
+
+                    if(not xinput + 1 > len(map)):
+                        gridList.append(map[xinput + 1][yinput])
+                    if(not xinput - 1 < 0):
+                        gridList.append(map[xinput - 1][yinput])
+                    if(not yinput + 1 > len(map[0])):
+                        gridList.append(map[xinput][yinput + 1])
+                    if(not yinput - 1 > 0):
+                        gridList.append(map[xinput][yinput - 1])
+
+        total_count = 0
+        total_count += gridList.count("HSE")
+        total_count += gridList.count("SHP")
+        total_count += gridList.count("BCH")*2
+        if(gridList.count != 0):
+            hse_score.append(total_count)
+    
+    hse_score_num = sum(hse_score)
+    return hse_score_num
+
+
+
     
 def calculateScore():
     #Use global varibale: Building Pool
