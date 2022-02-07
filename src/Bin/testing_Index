@@ -1,6 +1,6 @@
 from os import error
 import pytest
-import Index
+import IndexGmae
 
 def test_displayMainMenu(capfd):
     Index.displayMainMenu()

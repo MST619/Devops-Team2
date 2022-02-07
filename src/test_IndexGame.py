@@ -1,13 +1,7 @@
 import IndexGame
 import pytest
 from unittest.mock import Mock, patch
-
 from gameinit import buildingPool
-
-
-
-
-
 
 #2.1
 input_mock_1 = Mock()
