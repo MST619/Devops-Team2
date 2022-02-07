@@ -10,7 +10,6 @@ jobs:
     name: One with everything
     runs-on: ubuntu-18.04
     steps:
-      - uses: actions/checkout@master
       - name: Microsoft Teams Notification
         uses: ./
         if: always()
@@ -26,7 +25,6 @@ jobs:
     name: One with little info
     runs-on: ubuntu-18.04
     steps:
-      - uses: actions/checkout@master
       - name: Microsoft Teams Notification
         uses: ./
         if: always()
@@ -37,7 +35,6 @@ jobs:
     name: One with overwrite
     runs-on: ubuntu-18.04
     steps:
-      - uses: actions/checkout@master
       - name: Microsoft Teams Notification
         uses: ./
         if: always()
@@ -49,7 +46,6 @@ jobs:
     name: One with raw data
     runs-on: ubuntu-18.04
     steps:
-      - uses: actions/checkout@master
       - name: Microsoft Teams Notification
         uses: ./
         if: always()
@@ -66,7 +62,6 @@ jobs:
     name: Only if failure
     runs-on: ubuntu-18.04
     steps:
-      - uses: actions/checkout@master
       - name: Microsoft Teams Notification
         uses: ./
         if: failure()
