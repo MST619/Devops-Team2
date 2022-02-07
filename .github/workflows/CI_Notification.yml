@@ -12,7 +12,7 @@ jobs:
     steps:
       - uses: actions/checkout@master
       - name: Microsoft Teams Notification
-        uses: MST619/Devops-Team2@master
+        uses: MST619/Devops-Team2
         if: always()
         with:
           webhook_url: ${{ secrets.MSTEAMS_WEBHOOK }}
@@ -28,7 +28,7 @@ jobs:
     steps:
       - uses: actions/checkout@master
       - name: Microsoft Teams Notification
-        uses: MST619/Devops-Team2@master
+        uses: MST619/Devops-Team2
         if: always()
         with:
           webhook_url: ${{ secrets.MSTEAMS_WEBHOOK }}
@@ -39,7 +39,7 @@ jobs:
     steps:
       - uses: actions/checkout@master
       - name: Microsoft Teams Notification
-        uses: MST619/Devops-Team2@master
+        uses: MST619/Devops-Team2
         if: always()
         with:
           webhook_url: ${{ secrets.MSTEAMS_WEBHOOK }}
@@ -51,7 +51,7 @@ jobs:
     steps:
       - uses: actions/checkout@master
       - name: Microsoft Teams Notification
-        uses: MST619/Devops-Team2@master
+        uses: MST619/Devops-Team2
         if: always()
         with:
           webhook_url: ${{ secrets.MSTEAMS_WEBHOOK }}
@@ -68,7 +68,7 @@ jobs:
     steps:
       - uses: actions/checkout@master
       - name: Microsoft Teams Notification
-        uses: MST619/Devops-Team2@master
+        uses: MST619/Devops-Team2
         if: failure()
         with:
           webhook_url: ${{ secrets.MSTEAMS_WEBHOOK }}
