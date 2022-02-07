@@ -169,7 +169,31 @@ def shpcalc(map, shp_score):
             if map[xinput][yinput] == "SHP":
                 SHPgridList = (list(map[xinput + dxinput][yinput + dyinput]\
                 for dxinput, dyinput in ((-1,0), (0,1), (1,0), (0,-1))))
-                shp_score += len(set(SHPgridList))
+        shp_score += len(set(SHPgridList))
+
+def hwycalc(map, hwy_score):
+    for xinput in range(len(map)):
+        hwy_chain = 0
+        for yininput in range(len(map[xinput])):
+            if map[xinput][yininput] == "HWY":
+                if hwy_chain != 0:
+                    hwy_chain -= 1
+                    continue
+            hwy_chain = 1
+            ymove = yininput
+            while True:
+                if map[xinput][yininput][ymove + 1] == "HWY":
+                    hwy_chain += 1
+                    ymove += 1
+                else:
+                    break
+        else:
+            break
+    if hwy_chain != 0:
+        hwy_score.append(hwy_chain**2)
+        hwy_chain -= 1
+
+
 
     
 def calculateScore():
