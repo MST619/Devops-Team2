@@ -9,7 +9,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       # this is the new step
-      - uses: .actions/Notification
+      - uses: MST619/Devops-Team2//actions/Notification
         if: always()
         with:
           github-token: ${{ github.token }}
