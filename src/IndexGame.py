@@ -94,6 +94,7 @@ def calculateScore():
     return buildingScore
 
 def displayScore():
+    
     #Use global varibale: Building Pool
     score = calculateScore()
     #Print score

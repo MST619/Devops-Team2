@@ -65,3 +65,9 @@ def test_remainingBuildings():
                 "PRK":0
             }
     assert result == expectedResult
+
+#4.4 
+def test_displayscore():
+    result = IndexGame.displayScore()
+    expectedResult = False
+    assert result == expectedResult
