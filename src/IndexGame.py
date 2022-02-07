@@ -87,12 +87,6 @@ def displayGameMenu(turn, map, selectedBuilding):
 
 def chooseBuildingPool():
     #To choose which building to build for building pool
-    # choices = input("Enter the 5 building types you want: ").split(' ')
-    # for choice in choices:
-    #     if choice not in buildingPool:
-    #         print("Invalid input!")
-    #     else:
-    #         buildingPool[choice] = 5
     userchoices = []
     building1 = str(input("Please enter a desired building type (1/5): "))
     building2 = str(input("Please enter a desired building type (2/5): "))
@@ -103,6 +97,7 @@ def chooseBuildingPool():
     for choice in userchoices:
         if choice not in buildingPool:
             print("Invalid input!")
+            chooseBuildingPool()
         else:
             buildingPool[choice] = 8
     #Use global variable: BuildingPool Dictionary
@@ -203,6 +198,12 @@ def displayScore():
     score = calculateScore()
     #Print score
     print("Under development")
+
+def remainingBuildings():
+    #Use global variable: Building Pool
+    for building, count in buildingPool.items():
+        print(building, ':', count)
+        return buildingPool
 
 #2.2.2  Create game map list
 def buildGameList(mapSize): 

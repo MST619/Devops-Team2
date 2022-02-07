@@ -1,4 +1,4 @@
-name: CI for HelloWorld
+name: CI for indexGame
 
 on: 
   push:

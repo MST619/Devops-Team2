@@ -1,6 +1,10 @@
 from os import error
 import pytest
+<<<<<<< HEAD:src/bin/testing_Index.py
 import bin.Index as Index
+=======
+import IndexGmae
+>>>>>>> main:src/Bin/testing_Index
 
 def test_displayMainMenu(capfd):
     Index.displayMainMenu()
