@@ -3,6 +3,8 @@ name: CI for indexGame
 on: 
   push:
     branches: [main]
+  pull_request:
+    branches: [ main ]
 
 jobs:
 #   linting:
@@ -65,4 +67,4 @@ jobs:
       if: always()
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        files: src/report.xml
+        files: dist/report.xml
