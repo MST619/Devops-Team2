@@ -1,5 +1,5 @@
 name: Microsoft Teams Deploy Card
-author: Project Toko Bifrost
+author: Deploying message on teams when there is merge to main branch
 description: Notify your Teams channel with a beautiful, comprehensive deployment card
 branding:
   icon: bell
