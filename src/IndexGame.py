@@ -12,7 +12,6 @@ S10198398, Jeremiah Long
 # >>>>>>> CheckFile#3.1
 
 # Global variables and imports
-from Index import runMainMenu
 
 
 turn = 0

@@ -57,9 +57,6 @@ def test_LoadGame():
     assert result == expectedResult
 
 #4.2.2
-# def test_buildBuildings(monkeypatch):
-#     monkeypatch.setattr('builtins.input', lambda _: "A1")
-#     result = IndexGame.buildBuildings("BCH")
 map = [[' ', ' '], [' ', ' ']]
 @pytest.mark.parametrize("map, input, expected", [(map, "A1", True), (map, "C3", False)])
 def test_positionCheck(map, input, expected):
