@@ -99,6 +99,14 @@ def test_shpcalc(map, shpscore, expected):
     result = IndexGame.faccalc(map, shpscore)
     assert result == expected
 
+@pytest.mark.parametrize('map, hwyscore, expected', [([['HWY', 'HWY'],['FAC', 'HSE']], [], 4),
+                                            ([['HWY', 'FAC'], ['FAC', ' ']], [], 1),
+                                            ([['HWY', 'HWY', ' '], ['HWY', 'HWY', 'HWY']], [], 13),
+                                            ([['FAC', 'HSE', 'HWY'], ['HWY', 'WY', 'HWY'], ['HWY', 'HWY', ' ']], [], 14)])
+def test_hwycalc(map, hwyscore, expected):
+    result = IndexGame.faccalc(map, hwyscore)
+    assert result == expected
+
 def test_displayscore():
     result = IndexGame.displayScore()
     expectedResult = False
