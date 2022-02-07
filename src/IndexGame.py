@@ -15,13 +15,13 @@ S10198398, Jeremiah Long
 
 turn = 0
 map = []
-bch_score = 0
-fac_score = 0
-hse_score = 0
-shp_score = 0
-hwy_score = 0
-prk_score = 0
-mon_score = 0
+bch_score = []
+fac_score = []
+hse_score = []
+shp_score = []
+hwy_score = []
+prk_score = []
+mon_score = []
 #Building pool dictionary
 buildingPool = { 
                 "BCH":0, 
@@ -96,21 +96,40 @@ def bchcalc(map, bch_score):
     for xinput in range(len(map)):
     #if first column append 3
         if "BCH" in map[xinput][0]:
-            bch_score += 3
+            bch_score.append(3)
 
         #if last column append 3
         if "BCH" in map[xinput][-1]:
-            bch_score += 3
+            bch_score.append(3)
 
         #finding all the other BCH and adding 1 point
         for yinput in range((len(map[xinput]))):
             if yinput != 0 and yinput != len(map[xinput]) -1:
                 if map[xinput][yinput] == "BCH":
                     
-                    bch_score += 1
-    
-    return bch_score    
+                    bch_score.append(1)
+    bch_score_num = sum(bch_score)
+    return bch_score_num
 
+def faccalc(map, fac_score):
+    fac_count = 0
+    for xinput in range(len(map)):
+    #finding all the FAC and reassign it’s value for calculation
+        for yinput in range((len(map[xinput]))):
+            if map[xinput][yinput] == "FAC":
+                fac_count += 1
+
+    if fac_count <= 4:
+        fac_point = fac_count * fac_count
+        fac_score.append(fac_point)
+    if fac_count > 4:
+        fac_count -= 4
+        fac_point = 16 + fac_count
+        fac_score.append(fac_point)
+
+    fac_score_num = sum(fac_score)
+    return fac_score_num
+    
 def calculateScore():
     #Use global varibale: Building Pool
     #calculateScore for each building

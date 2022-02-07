@@ -67,17 +67,20 @@ def test_remainingBuildings():
     assert result == expectedResult
 
 #4.4 
-@pytest.mark.parametrize('map, bchscore, expected', [([['BCH', 'BCH'],[' ', ' ']], 0, 6),
-                                            ([['BCH', 'BCH'], ['BCH', ' ']], 0, 9),
-                                            ([['BCH', 'BCH', ' '], ['BCH', ' ', ' ']], 0, 7),
-                                            ([['BCH', 'BCH', ' '], ['BCH', ' ', 'BCH'], [' ', 'BCH', ' ']], 0, 11)])
+@pytest.mark.parametrize('map, bchscore, expected', [([['BCH', 'BCH'],[' ', ' ']], [], 6),
+                                            ([['BCH', 'BCH'], ['BCH', ' ']], [], 9),
+                                            ([['BCH', 'BCH', ' '], ['BCH', ' ', ' ']], [], 7),
+                                            ([['BCH', 'BCH', ' '], ['BCH', ' ', 'BCH'], [' ', 'BCH', ' ']], [], 11)])
 def test_bchcalc(map, bchscore, expected):
     result = IndexGame.bchcalc(map, bchscore)
     assert result == expected
 
-def test_faccalc():
-    result = IndexGame.faccalc([['FAC', 'FAC'], [' ', ' ']], 0)
-    expected = 4
+@pytest.mark.parametrize('map, facscore, expected', [([['FAC', 'FAC'],[' ', ' ']], [], 4),
+                                            ([['FAC', 'FAC'], ['FAC', ' ']], [], 9),
+                                            ([['FAC', 'FAC', ' '], ['FAC', ' ', ' ']], [], 9),
+                                            ([['FAC', 'FAC', ' '], ['FAC', ' ', 'FAC'], [' ', 'FAC', ' ']], [], 17)])
+def test_faccalc(map, facscore, expected):
+    result = IndexGame.faccalc(map, facscore)
     assert result == expected
 
 def test_displayscore():
