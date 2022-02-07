@@ -1,7 +1,6 @@
 on: 
   push:
-    branches:
-      - master
+    branches: [main]
 
 jobs:
   release-on-push:
@@ -10,7 +9,7 @@ jobs:
       GITHUB_TOKEN: ${{ secrets.DEVOPSMSTEAMSCI }}
     steps:
       - id: release
-        uses: MST619/Devops-Team2@master
+        uses: ./
         with:
           bump_version_scheme: minor
           tag_prefix: v
