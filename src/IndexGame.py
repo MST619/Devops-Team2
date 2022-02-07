@@ -12,7 +12,6 @@ S10198398, Jeremiah Long
 # >>>>>>> CheckFile#3.1
 
 # Global variables and imports
-from Index import runMainMenu
 
 
 turn = 0
@@ -105,7 +104,7 @@ def chooseBuildingPool():
         if choice not in buildingPool:
             print("Invalid input!")
         else:
-            buildingPool[choice] = 5
+            buildingPool[choice] = 8
     #Use global variable: BuildingPool Dictionary
     print(buildingPool)
     return buildingPool
