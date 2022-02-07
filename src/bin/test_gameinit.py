@@ -29,15 +29,15 @@ def test_newGame():
 
 
 input_mock_1 = Mock()
-input_mock_1.return_value = HSE
+input_mock_1.return_value = 'HSE'
 input_mock_2 = Mock()
-input_mock_2.return_value = FAC
+input_mock_2.return_value = 'FAC'
 input_mock_3 = Mock()
-input_mock_3.return_value = BCH
+input_mock_3.return_value = 'BCH'
 input_mock_4 = Mock()
-input_mock_4.return_value = HWY
+input_mock_4.return_value = 'HWY'
 input_mock_5 = Mock()
-input_mock_5.return_value = SHP
+input_mock_5.return_value = 'SHP'
 
 input_mock = Mock()
 input_mock.side_effect = [input_mock_1.return_value, input_mock_2.return_value, input_mock_3.return_value, input_mock_4.return_value, input_mock_5.return_value]

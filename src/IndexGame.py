@@ -11,6 +11,8 @@ S10198398, Jeremiah Long
 # #import pandas as pd
 # >>>>>>> CheckFile#3.1
 
+# Global variables and imports
+
 
 turn = 0
 map = []
@@ -24,6 +26,35 @@ buildingPool = {
                 "MON":0,
                 "PRK":0
             }
+
+columnmapping = {
+    'A': 1,
+    'B': 2,
+    'C': 3,
+    'D': 4,
+    'E': 5,
+    'F': 6,
+    'G': 7,
+    'H': 8,
+    'I': 9,
+    'J': 10,
+    'K': 11,
+    'L': 12,
+    'M': 13,
+    'N': 14,
+    'O': 15,
+    'P': 16,
+    'Q': 17,
+    'R': 18,
+    'S': 19,
+    'T': 20,
+    'U': 21,
+    'V': 22,
+    'W': 23,
+    'X': 24,
+    'Y': 25,
+    'Z': 26
+}
 mapSize = [0,0]  #X-axis, Y-axis
 
 MainMenuData = \
@@ -93,12 +124,6 @@ def displayGameMenu(turn, map, selectedBuilding):
 
 def chooseBuildingPool():
     #To choose which building to build for building pool
-    # choices = input("Enter the 5 building types you want: ").split(' ')
-    # for choice in choices:
-    #     if choice not in buildingPool:
-    #         print("Invalid input!")
-    #     else:
-    #         buildingPool[choice] = 5
     userchoices = []
     building1 = str(input("Please enter a desired building type (1/5): "))
     building2 = str(input("Please enter a desired building type (2/5): "))
@@ -109,8 +134,9 @@ def chooseBuildingPool():
     for choice in userchoices:
         if choice not in buildingPool:
             print("Invalid input!")
+            chooseBuildingPool()
         else:
-            buildingPool[choice] = 5
+            buildingPool[choice] = 8
     #Use global variable: BuildingPool Dictionary
     print(buildingPool)
     return buildingPool
@@ -120,10 +146,82 @@ def randomBuilding():
     #Return selected building in a list
     return randomSelectedBuilding
 
-def buildBuildings(selectedBuilding):
+def positionCheck(map, input):
+    letter = False
+    number = False
+
+    
+    if len(input) <= 3:
+        lettercoor = input[0].upper()
+        numbercoor = input[1:]
+        column = columnmapping[lettercoor]
+        if column <= len(map[0]):
+            letter = True
+        else:
+            print("Invalid X coordinate, please enter again.")
+        if numbercoor.isnumeric() and int(numbercoor) <= len(map):
+            number = True
+        else:
+            print("Invalid Y coordinate, please enter again.")
+    elif input == "":
+        print("No input, please enter coordinates.")
+    else:
+        print("Invalid input, please enter again.")
+
+    if letter == True and number == True:
+        return True
+    else:
+        return False
+
+def emptyCheck(map, rowinput, columninput):
+    coorcheck = False
+    column = columnmapping[columninput]
+    for eachrow in map:
+        if map.index(eachrow) == rowinput-1:
+            for rowcoor in eachrow:
+                if eachrow.index(rowcoor) == column-1:
+                    if rowcoor == " ":
+                        coorcheck = True
+                    else:
+                        print("Space is taken, please enter another input")
+    if coorcheck == True:
+        return True
+    else:
+        return False
+
+def deductBuildingPool(buildingPool, selectedBuilding):
+    buildingPool[selectedBuilding] -= 1
+    return buildingPool
+
+
+def buildBuildings(map, selectedBuilding, buildingPool, turn, input):
     #Use global variable: Map
+    updateRow = 0
+    updateColumn = 0
+    coordinates = []
+
+    if positionCheck(map, input) == True:
+        coordinates.append(input[0])
+        coordinates.append(input[1:])
+        updateColumn = columnmapping[coordinates[0].upper()]
+        updateRow = int(coordinates[1])
+
+
+    if updateRow != 0 and updateColumn != 0:
+        if turn == 1:
+            map[updateRow-1][updateColumn-1] = selectedBuilding
+            turn += 1
+            deductBuildingPool(buildingPool, selectedBuilding)
+        
+        else:
+            if emptyCheck(map, updateRow, updateColumn) == True:
+                map[updateRow-1][updateColumn-1] = selectedBuilding
+                turn += 1
+                deductBuildingPool(buildingPool, selectedBuilding)
+                
+    return map
     #Update building location in the map
-    print("Under development")
+
 
 def calculateScore():
     #Use global varibale: Building Pool
@@ -137,6 +235,12 @@ def displayScore():
     score = calculateScore()
     #Print score
     print("Under development")
+
+def remainingBuildings():
+    #Use global variable: Building Pool
+    for building, count in buildingPool.items():
+        print(building, ':', count)
+        return buildingPool
 
 #2.2.2  Create game map list
 def buildGameList(mapSize): 
