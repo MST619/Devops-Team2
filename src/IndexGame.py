@@ -76,7 +76,7 @@ def chooseBuildingPool():
             print("Invalid input!")
             chooseBuildingPool()
         else:
-            buildingPool[choice] = 5
+            buildingPool[choice] = 8
     #Use global variable: BuildingPool Dictionary
     print(buildingPool)
     return buildingPool
@@ -94,18 +94,20 @@ def buildBuildings(selectedBuilding):
 def bchcalc(map, bch_score):
 #part for BCH calculation
     for xinput in range(len(map)):
-    #if first row append 3
+    #if first column append 3
         if "BCH" in map[xinput][0]:
             bch_score += 3
 
-        #if last row append 3
+        #if last column append 3
         if "BCH" in map[xinput][-1]:
             bch_score += 3
 
-    #finding all the other BCH and adding 1 point
-    for yinput in range((len(map[xinput]))):
-        if map[xinput][yinput] == "BCH":
-            bch_score += 1
+        #finding all the other BCH and adding 1 point
+        for yinput in range((len(map[xinput]))):
+            if yinput != 0 and yinput != len(map[xinput]) -1:
+                if map[xinput][yinput] == "BCH":
+                    
+                    bch_score += 1
     
     return bch_score    
 

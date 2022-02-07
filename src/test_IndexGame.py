@@ -21,12 +21,12 @@ def test_chooseBuildingPool():
     with patch('builtins.input', input_mock) as mock_method:
         result = IndexGame.chooseBuildingPool()
     expected = { 
-                "BCH":5, 
-                "HSE":5,
-                "SHP":5,
-                "FAC":5,
+                "BCH":8, 
+                "HSE":8,
+                "SHP":8,
+                "FAC":8,
                 "HWY":0,
-                "MON":5,
+                "MON":8,
                 "PRK":0
             }
     assert mock_method.call_count == 5
@@ -56,20 +56,23 @@ def test_LoadGame():
 def test_remainingBuildings():
     result = IndexGame.remainingBuildings()
     expectedResult = { 
-                "BCH":5, 
-                "HSE":5,
-                "SHP":5,
-                "FAC":5,
+                "BCH":8, 
+                "HSE":8,
+                "SHP":8,
+                "FAC":8,
                 "HWY":0,
-                "MON":5,
+                "MON":8,
                 "PRK":0
             }
     assert result == expectedResult
 
 #4.4 
-def test_bchcalc():
-    result = IndexGame.bchcalc([['BCH', 'BCH'],[' ', ' ']], 0)
-    expected = 6
+@pytest.mark.parametrize('map, bchscore, expected', [([['BCH', 'BCH'],[' ', ' ']], 0, 6),
+                                            ([['BCH', 'BCH'], ['BCH', ' ']], 0, 9),
+                                            ([['BCH', 'BCH', ' '], ['BCH', ' ', ' ']], 0, 7),
+                                            ([['BCH', 'BCH', ' '], ['BCH', ' ', 'BCH'], [' ', 'BCH', ' ']], 0, 11)])
+def test_bchcalc(map, bchscore, expected):
+    result = IndexGame.bchcalc(map, bchscore)
     assert result == expected
 
 def test_faccalc():
