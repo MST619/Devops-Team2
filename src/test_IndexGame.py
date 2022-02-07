@@ -67,6 +67,11 @@ def test_remainingBuildings():
     assert result == expectedResult
 
 #4.4 
+def test_bchcalc():
+    result = IndexGame.bchcalc([['BCH', 'BCH'],[' ', ' ']], 0)
+    expected = 6
+    assert result == expected
+
 def test_displayscore():
     result = IndexGame.displayScore()
     expectedResult = False

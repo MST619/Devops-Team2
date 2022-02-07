@@ -12,11 +12,16 @@ S10198398, Jeremiah Long
 # >>>>>>> CheckFile#3.1
 
 # Global variables and imports
-from Index import runMainMenu
-
 
 turn = 0
 map = []
+bch_score = 0
+fac_score = 0
+hse_score = 0
+shp_score = 0
+hwy_score = 0
+prk_score = 0
+mon_score = 0
 #Building pool dictionary
 buildingPool = { 
                 "BCH":0, 
@@ -86,12 +91,33 @@ def buildBuildings(selectedBuilding):
     #Update building location in the map
     print("Under development")
 
+
+def bchcalc(map, bch_score):
+#part for BCH calculation
+    for xinput in range(len(map)):
+    #if first row append 3
+        if "BCH" in map[xinput][0]:
+            bch_score += 3
+
+        #if last row append 3
+        if "BCH" in map[xinput][-1]:
+            bch_score += 3
+
+    #finding all the other BCH and adding 1 point
+    for yinput in range((len(map[xinput]))):
+        if map[xinput][yinput] == "BCH":
+            bch_score += 1
+    
+    return bch_score    
+
 def calculateScore():
     #Use global varibale: Building Pool
     #calculateScore for each building
     buildingScore = []
     #Return building score via int list
     return buildingScore
+
+  
 
 def displayScore():
     
