@@ -3,8 +3,6 @@ name: CI for indexGame
 on: 
   push:
     branches: [main]
-  pull_request:
-    branches: [ main ]
 
 jobs:
 #   linting:
@@ -51,7 +49,14 @@ jobs:
       run: |
         cd src
         pytest -s --cov -v --junitxml=report.xml
-         
+    - uses: actions/checkout@v2
+      # this is the new step
+      - uses: ./
+        if: always()
+        with:
+          github-token: ${{ github.token }}
+          webhook-uri: ${{ secrets.MSTEAMS_WEBHOOK }}
+
     - if: ${{failure()}}       
       name: Create Issues
       uses: nashmaniac/create-issue-action@v1.1
@@ -61,7 +66,6 @@ jobs:
           assignees: ${{github.actor}}
           labels: worflow-failed
           body: Workflow failed for commit ${{github.sha}} @ ${{github.ref}}       
-
     - name: Publish Unit Test Results
       uses: EnricoMi/publish-unit-test-result-action@v1.24
       if: always()
