@@ -117,9 +117,8 @@ def test_buildBuildings(map, selectedBuilding, buildingPool, turn, input, expect
     result = IndexGame.buildBuildings(map, selectedBuilding, buildingPool, turn, input)
     assert result == expected
     
-@pytest.mark.parametrize("xAxis, yAxis, expectedreturn",
-    [(2, 3, [['     A     B   '], ['  +-----+-----+'], [' ', '1', '|', ' ', ' ', ' ', ' ', ' ', '|', ' ', ' ', ' ', ' ', ' ', '|', ''], ['  +-----+-----+'], [' ', '2', '|', ' ', ' ', ' ', ' ', ' ', '|', ' ', ' ', ' ', ' ', 
-' ', '|', ''], ['  +-----+-----+'], [' ', '3', '|', ' ', ' ', ' ', ' ', ' ', '|', ' ', ' ', ' ', ' ', ' ', '|', ''], ['  +-----+-----+']])])
-def test_gameGrid(xAxis, yAxis, expectedreturn):
-    result = IndexGame.gameGrid(xAxis, yAxis)
+@pytest.mark.parametrize("xAxis, yAxis, map, expectedreturn",
+    [(2, 2, map, [['     A     B   '], ['  +-----+-----+'], [' ', '1', '|', ' ', ' ', ' ', ' ', ' ', '|', ' ', ' ', ' ', ' ', ' ', '|', ''], ['  +-----+-----+'], [' ', '2', '|', ' ', ' ', ' ', ' ', ' ', '|', ' ', ' ', ' ', ' ', ' ', '|', ''], ['  +-----+-----+']])])
+def test_gameGrid(xAxis, yAxis, map,expectedreturn):
+    result = IndexGame.gameGrid(xAxis, yAxis, map)
     assert result == expectedreturn

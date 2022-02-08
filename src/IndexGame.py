@@ -380,7 +380,7 @@ def MainMenuSelection(userInput): # To validate the user main menu options
         else:
             print("Invalid input!\n", end = '')
             
-def gameGrid(xAxis,yAxis):
+def gameGrid(xAxis,yAxis, map):
     gameGridList = map
     #Start of code to create alphabetLine - First Line of game grid"
     alphabetLineContent = "  "
