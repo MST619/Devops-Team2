@@ -49,6 +49,14 @@ jobs:
       run: |
         cd src
         pytest -s --cov -v --junitxml=report.xml
+    - name: Upload Test Results
+      if: always()
+      uses: actions/upload-artifact@v2
+      with:
+        name: Unit Test Results (python-${{ matrix.python-version }}, ${{ matrix.os }})
+        path: |
+          test-results/*.xml
+          unit-test-results.json
     - name: Sent message to Teams about Push event
       uses: ./
       if: always()
@@ -65,16 +73,16 @@ jobs:
           labels: worflow-failed
           body: Workflow failed for commit ${{github.sha}} @ ${{github.ref}}    
 
-    - name: Download Artifacts
-      uses: actions/download-artifact@v2
-      with:
-        path: artifacts
+    # - name: Download Artifacts
+    #   uses: actions/download-artifact@v2
+    #   with:
+    #     path: artifacts
 
-    - name: Publish Unit Test Results
-      uses: EnricoMi/publish-unit-test-result-action@v1.24
-      if: always()
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        files: artifacts/**/*.xml
-        LOG_LEVEL: DEBUG
+    # - name: Publish Unit Test Results
+    #   uses: EnricoMi/publish-unit-test-result-action@v1.24
+    #   if: always()
+    #   with:
+    #     github_token: ${{ secrets.GITHUB_TOKEN }}
+    #     files: artifacts/**/*.xml
+    #     LOG_LEVEL: DEBUG
       
