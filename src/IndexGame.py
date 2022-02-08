@@ -14,6 +14,9 @@ S10198398, Jeremiah Long
 # Global variables and imports
 
 
+from pickle import FALSE
+
+
 turn = 0
 map = []
 #Building pool dictionary
@@ -217,12 +220,12 @@ def buildGameMap():
     #Build game map
     x = "1"
     y = "1"
-    while checkUserInputInt(x):
+    while checkUserInputInt(x) == FALSE:
         x = input("Please enter x-axis: ")
-    while checkUserInputInt(y):
+    while checkUserInputInt(y) == False:
         y = input("Please enter y-axis: ")
     #Global var: mapSize
-    mapSize=[x,y] #X-axis, Y-axis
+    mapSize=[int(x),int(y)] #X-axis, Y-axis
 
     #Build game list
     map = buildGameList(mapSize)
