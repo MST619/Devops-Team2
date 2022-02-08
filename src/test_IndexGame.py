@@ -83,7 +83,7 @@ def test_faccalc(map, facscore, expected):
     result = IndexGame.faccalc(map, facscore)
     assert result == expected
 
-@pytest.mark.parametrize('map, hsescore, expected', [([['HSE', 'FAC'],['HSE', 'BCH']], [], 1),
+@pytest.mark.parametrize('map, hsescore, expected', [([['HSE', 'FAC'],['HSE', 'BCH']], [], 4),
                                             ([['HSE', 'SHP'], ['BCH', ' ']], [], 3),
                                             ([['HSE', 'HSE', 'BCH'], ['FAC', 'SHP', 'BCH']], [], 5),
                                             ([['HSE', ' ', 'BCH'], ['FAC', 'SHP', 'HSE'], ['BCH', 'HSE', 'HWY']], [], 7)])
@@ -112,7 +112,7 @@ def test_hwycalc(map, hwyscore, expected):
                                             ([['PRK', 'PRK', 'PRK'], ['HWY', 'PRK', 'PRK']], [], 22),
                                             ([['PRK', 'HSE', 'PRK'], ['PRK', 'PRK', 'PRK'], ['PRK', 'HWY', 'PRK']], [], 24)])
 def test_prkcalc(map, prkscore, expected):
-    result = IndexGame.faccalc(map, prkscore)
+    result = IndexGame.prkcalc(map, prkscore)
     assert result == expected
 
 @pytest.mark.parametrize('map, monscore, expected', [([['MON', 'MON'],['MON', 'MON']], [], 16),
@@ -120,7 +120,7 @@ def test_prkcalc(map, prkscore, expected):
                                             ([['MON', 'MON', ' '], ['MON', 'HWY', 'HWY']], [], 5),
                                             ([['MON', 'HSE', 'MON'], ['HWY', 'MON', 'HWY'], ['MON', 'MON', ' ']], [], 20)])
 def test_moncalc(map, monscore, expected):
-    result = IndexGame.faccalc(map, monscore)
+    result = IndexGame.moncalc(map, monscore)
     assert result == expected
 
 

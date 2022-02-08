@@ -170,6 +170,7 @@ def shpcalc(map, shp_score):
                 SHPgridList = (list(map[xinput + dxinput][yinput + dyinput]\
                 for dxinput, dyinput in ((-1,0), (0,1), (1,0), (0,-1))))
         shp_score += len(set(SHPgridList))
+    return shp_score
 
 def hwycalc(map, hwy_score):
     for xinput in range(len(map)):
@@ -193,9 +194,89 @@ def hwycalc(map, hwy_score):
         hwy_score.append(hwy_chain**2)
         hwy_chain -= 1
 
+    hwy_score_num = sum(hwy_score)
+    return hwy_score_num
 
+def prkcalc(map , prk_score):
+    for xinput in range(len(map)):
+        for yinput in range(len(map)):
+            if (any(0 <= yinput + dyinput <= len(map) and 0 <= xinput + dxinput <= len(map[0]) \
+                and map[xinput + dxinput][yinput + dyinput] == "PRK" \
+                for dxinput, dyinput in ((-1, 0), (0,1), (1,0), (0,-1)))):
+                    gridList = []
 
-    
+                    if(not xinput + 1 > len(map[0])):
+                        gridList.append(map[xinput + 1][yinput])
+                    if(not xinput - 1 < 0):
+                        gridList.append(map[xinput - 1][yinput])
+                    if(not yinput + 1 > len(map)):
+                        gridList.append(map[xinput][yinput + 1])
+                    if(not yinput - 1 > 0):
+                        gridList.append(map[xinput][yinput - 1])
+                    total_count = 0
+                    Set_score = 0
+                    total_count += gridList.count("PRK")
+                    
+                    if (gridList.count == 0):
+                        prk_score.append(Set_score)
+                    if (gridList.count == 1):
+                        Set_score = 1
+                        prk_score.append(Set_score)
+                    if(gridList.count == 2):
+                        Set_score = 3
+                        prk_score.append(Set_score)
+                    if(gridList.count == 3):
+                        Set_score = 8
+                        prk_score.append(Set_score)
+                    if(gridList.count == 4):
+                        Set_score = 16
+                        prk_score.append(Set_score)
+                    if(gridList.count == 5):
+                        Set_score = 22
+                        prk_score.append(Set_score)
+                    if(gridList.count == 6):
+                        Set_score = 23
+                        prk_score.append(Set_score)
+                    if(gridList.count == 7):
+                        Set_score = 24
+                        prk_score.append(Set_score)
+                    if(gridList.count >= 8):
+                        Set_score = 25
+                        prk_score.append(Set_score)
+
+    prk_score_num = sum(prk_score)
+    return prk_score_num
+
+def moncalc(map, mon_score):
+    Cornerscore = 0
+    Moncalc = 0
+    Index = 0
+    for xinput in range(len(map)):
+        #if in the corner of the game grid add 2
+        if "MON" == map[xinput][0]:
+            Cornerscore += 1
+            Index += 1
+            Moncalc += 2
+
+        if "MON" == map[xinput][-1]:
+            Cornerscore += 1
+            Index += 1
+            Moncalc += 2
+        
+                
+        #finding all the other MON and adding 1 point
+        for yinput in range((len(map[xinput]))):
+            if map[xinput][yinput] == "MON":
+                Index += 1
+                Moncalc += 1
+            
+    if Cornerscore >= 3:
+        Moncalc = 4 * Index
+            
+    mon_score.append(Moncalc)
+    mon_score_num = sum(mon_score)
+    return mon_score_num
+
 def calculateScore():
     #Use global varibale: Building Pool
     #calculateScore for each building
