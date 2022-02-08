@@ -19,6 +19,7 @@ from pickle import FALSE
 
 turn = 0
 map = []
+alphabetList = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
 #Building pool dictionary
 buildingPool = { 
                 "BCH":0, 
@@ -60,9 +61,31 @@ columnmapping = {
 }
 mapSize = [0,0]  #X-axis, Y-axis
 
+MainMenuData = \
+['Welcome, mayor of Simp City!',
+'------------------------------',
+'1. Start new game',
+'2. Load saved game',
+'3. Show high scores\n'
+'0. Exit']
+
 # General functions
-def displayMainMenu():
-    return True
+def displayMainMenu(): # To display the main menu
+    for i in range(len(MainMenuData)):
+            print(MainMenuData[i])
+   
+def runMainMenu(): # To run the main menu options
+    result = 1
+    while result != 0:
+        displayMainMenu()
+        userInput = input('Enter your option: ')
+        result = MainMenuSelection(userInput)
+
+    
+
+def exitGame(): # To exit the game once the user has entered 0
+    GameEnd = "Thanks for playing!"
+    return GameEnd
 
 def checkUserInputInt(value): #to check if the user input is able to conver to int
     try:
@@ -279,6 +302,7 @@ def checkFile(type):
     #find and load file
     try: 
         #Check game file #3.1
+        # df = pd.read_csv(filename)
         counter = 0
         while True:
             for i in open(filename):
@@ -297,44 +321,39 @@ def checkFile(type):
 def loadGame():
     #Check if file exsists
     if checkFile("LoadGame"):
-        try: 
-            counter = 0
-            buildingPoolDictionary ={ 
-                    "BCH":0, 
-                    "HSE":0,
-                    "SHP":0,
-                    "FAC":0,
-                    "HWY":0,
-                    "MON":0,
-                    "PRK":0
-                }
-            for x in open("LoadGame.py"):
-                x= x.strip("\n")
-                if counter == 0:
-                    turn = int(x)
-                elif counter == 1:
-                    buildingPoolDictionary["BCH"] = int(x)
-                elif counter == 2:
-                    buildingPoolDictionary["HSE"] = int(x)
-                elif counter == 3:
-                    buildingPoolDictionary["SHP"] = int(x)
-                elif counter == 4:
-                    buildingPoolDictionary["FAC"] = int(x)
-                elif counter == 5:
-                    buildingPoolDictionary["HWY"] = int(x)
-                elif counter == 6:
-                    buildingPoolDictionary["MON"] = int(x)
-                elif counter == 7:
-                    buildingPoolDictionary["PRK"] = int(x)
-                else:
-                    map.append(x.split(","))
-                mapSize[1] += 1
-            mapSize[0] = len(map[0])
-            return mapSize, map, buildingPoolDictionary, turn
-
-        except FileNotFoundError:
-            print("cannot find file")
-            return False
+        counter = 0
+        buildingPoolDictionary ={ 
+                "BCH":0, 
+                "HSE":0,
+                "SHP":0,
+                "FAC":0,
+                "HWY":0,
+                "MON":0,
+                "PRK":0
+            }
+        for x in open("LoadGame.py"):
+            x= x.strip("\n")
+            if counter == 0:
+                turn = int(x)
+            elif counter == 1:
+                buildingPoolDictionary["BCH"] = int(x)
+            elif counter == 2:
+                buildingPoolDictionary["HSE"] = int(x)
+            elif counter == 3:
+                buildingPoolDictionary["SHP"] = int(x)
+            elif counter == 4:
+                buildingPoolDictionary["FAC"] = int(x)
+            elif counter == 5:
+                buildingPoolDictionary["HWY"] = int(x)
+            elif counter == 6:
+                buildingPoolDictionary["MON"] = int(x)
+            elif counter == 7:
+                buildingPoolDictionary["PRK"] = int(x)
+            else:
+                map.append(x.split(","))
+            mapSize[1] += 1
+        mapSize[0] = len(map[0])
+    return mapSize, map, buildingPoolDictionary, turn
 
 #File functions
 def leaderBoard():
@@ -348,10 +367,72 @@ def saveLeaderboard():
     #Save data into file
     print("under development")
 
+def MainMenuSelection(userInput): # To validate the user main menu options
+        if userInput == "0":
+            exit = exitGame()
+            print(exit)
+            return 0
+        elif userInput == "1":
+            newGame()
+        elif userInput == "2":
+            print("Load a save file\n\n", end = '')
+            loadGame()
+        elif userInput == "3":
+            print("Display Leaderboard\n\n", end = '')
+            leaderBoard()
+        else:
+            print("Invalid input!\n", end = '')
+            
+def gameGrid(xAxis,yAxis, map):
+    gameGridList = map
+    #Start of code to create alphabetLine - First Line of game grid"
+    alphabetLineContent = "  "
+    alphabetLine = []
+    i = 0
+    while i < xAxis :
+        alphabetLineContent += "   " + alphabetList[i] + "  "
+        i+=1
+    alphabetLineContent += " "
+    alphabetLine.append(alphabetLineContent)
+    gameGridList.append(alphabetLine) #add first line to grid list - e.g [   A     B     C     D     E   ]
+    #End of code to create alphabetLine - First Line of game grid"
+
+    #Start of code to create boundaryLine - game grid seperating lines"
+    boundaryLineContent = "  "
+    boundaryLine = []
+    i = 0
+    while i < xAxis :
+        boundaryLineContent += "+-----"
+        i+=1
+
+    boundaryLineContent += "+"
+    boundaryLine.append(boundaryLineContent)
+    gameGridList.append(boundaryLine) #add second line to grid list -     e.g [+-----+-----+-----+-----+-----+]
+    #End of code to create boundaryLine - game grid seperating lines"
+
+    #Start of code to create grids
+    i = 0
+    while i < yAxis:
+        row = []
+        rowContent = ""
+        if i < 9:
+            row += ((" " + str(i+1) + "|     |") + (("     |") * (xAxis-1)))
+        else:
+            row += (("" + str(i+1) + "|     |") + (("     |") * (xAxis-1)))
+        row.append(rowContent)
+        gameGridList.append(row)
+        gameGridList.append(boundaryLine)
+        i+=1
+        #End of code to create grids
+      
+    #Prints out game grid
+    for line in gameGridList:
+        print("".join(line))
+    return gameGridList
 # UI
 def mainMenu():
     while True:
-        displayMainMenu()
+        runMainMenu()
         userInput = input("Please enter option: ")
         
         #Check if user input is valid
@@ -368,3 +449,7 @@ def mainMenu():
         else: 
             print("Please enter a valid user input")
 
+try:
+    runMainMenu()
+except:
+    pass

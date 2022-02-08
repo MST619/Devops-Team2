@@ -56,6 +56,20 @@ def test_buildingGameList():
 
 #     assert result == expectedResult
 
+#4.1.1
+def test_remainingBuildings():
+    result = IndexGame.remainingBuildings()
+    expectedResult = { 
+                "BCH":8, 
+                "HSE":8,
+                "SHP":8,
+                "FAC":8,
+                "HWY":0,
+                "MON":8,
+                "PRK":0
+            }
+    assert result == expectedResult
+
 #4.2.2
 map = [[' ', ' '], [' ', ' ']]
 @pytest.mark.parametrize("map, input, expected", [(map, "A1", True), (map, "C3", False)])
@@ -103,3 +117,8 @@ def test_buildBuildings(map, selectedBuilding, buildingPool, turn, input, expect
     result = IndexGame.buildBuildings(map, selectedBuilding, buildingPool, turn, input)
     assert result == expected
     
+@pytest.mark.parametrize("xAxis, yAxis, map, expectedreturn",
+    [(2, 2, map, [['     A     B   '], ['  +-----+-----+'], [' ', '1', '|', ' ', ' ', ' ', ' ', ' ', '|', ' ', ' ', ' ', ' ', ' ', '|', ''], ['  +-----+-----+'], [' ', '2', '|', ' ', ' ', ' ', ' ', ' ', '|', ' ', ' ', ' ', ' ', ' ', '|', ''], ['  +-----+-----+']])])
+def test_gameGrid(xAxis, yAxis, map,expectedreturn):
+    result = IndexGame.gameGrid(xAxis, yAxis, map)
+    assert result == expectedreturn
