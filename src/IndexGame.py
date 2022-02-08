@@ -125,7 +125,7 @@ def randomBuilding(buildingPool):
     randomBuilding2 = random.choice(availablebuildingtypes)
     print('1. Build a {}'.format(randomBuilding1))
     print('2. Build a {}'.format(randomBuilding2))
-
+    return randomBuilding1, randomBuilding2
     
 
 def positionCheck(map, input):
