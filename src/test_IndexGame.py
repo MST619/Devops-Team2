@@ -118,7 +118,8 @@ def test_prkcalc(map, prkscore, expected):
 @pytest.mark.parametrize('map, monscore, expected', [([['MON', 'MON'],['MON', 'MON']], [], 16),
                                             ([['MON', 'MON'], ['FAC', ' ']], [], 4),
                                             ([['MON', 'MON', ' '], ['MON', 'HWY', 'HWY']], [], 5),
-                                            ([['MON', 'HSE', 'MON'], ['HWY', 'MON', 'HWY'], ['MON', 'MON', ' ']], [], 20)])
+                                            ([['MON', 'HSE', 'MON'], ['HWY', 'MON', 'HWY'], ['MON', 'MON', ' ']], [], 20), 
+                                            ([['MON', 'HSE', 'MON'], ['MON', 'HWY', 'HWY'], ['MON', 'HSE', ' ']], [], 16)])
 def test_moncalc(map, monscore, expected):
     result = IndexGame.moncalc(map, monscore)
     assert result == expected

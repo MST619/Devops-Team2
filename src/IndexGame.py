@@ -267,10 +267,10 @@ def moncalc(map, mon_score):
                 
         #finding all the other MON and adding 1 point
         for yinput in range((len(map[xinput]))):
-                if yinput != 0 and yinput != len(map[xinput]) -1:
-                    if map[xinput][yinput] == "MON":
-                        Index += 1
-                        Moncalc += 1
+            if not ((xinput == 0 or xinput == len(map)-1) and (yinput == 0 or yinput == len(map[xinput])-1)):
+                if map[xinput][yinput] == "MON":
+                    Index += 1
+                    Moncalc += 1
             
     if Cornerscore >= 3:
         Moncalc = 4 * Index
