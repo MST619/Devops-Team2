@@ -14,6 +14,9 @@ S10198398, Jeremiah Long
 # Global variables and imports
 
 
+import random
+
+
 turn = 0
 map = []
 #Building pool dictionary
@@ -57,6 +60,14 @@ columnmapping = {
 }
 mapSize = [0,0]  #X-axis, Y-axis
 
+MainMenuData = \
+['Welcome, mayor of Simp City!',
+'------------------------------',
+'1. Start new game',
+'2. Load saved game',
+'3. Show high scores\n'
+'0. Exit']
+
 # General functions
 def displayMainMenu():
     return True
@@ -81,6 +92,7 @@ def displayGameMenu(turn, map, selectedBuilding):
     #display building remaining
     #display map
     #display 2 randomly selected building via selectedBuilding
+    randomBuilding()
     #display game menu options
     
     print("Under development")
@@ -104,10 +116,17 @@ def chooseBuildingPool():
     print(buildingPool)
     return buildingPool
 
-def randomBuilding():
-    randomSelectedBuilding = []
-    #Return selected building in a list
-    return randomSelectedBuilding
+def randomBuilding(buildingPool):
+    availablebuildingtypes = []
+    for building, buildingcount in buildingPool.items():
+        if buildingcount != 0:
+            availablebuildingtypes.append(building)
+    randomBuilding1 = random.choice(availablebuildingtypes)
+    randomBuilding2 = random.choice(availablebuildingtypes)
+    print('1. Build a {}'.format(randomBuilding1))
+    print('2. Build a {}'.format(randomBuilding2))
+
+    
 
 def positionCheck(map, input):
     letter = False
@@ -361,3 +380,7 @@ def mainMenu():
         else: 
             print("Please enter a valid user input")
 
+try:
+    runMainMenu()
+except:
+    pass
