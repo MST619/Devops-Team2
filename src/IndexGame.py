@@ -252,23 +252,25 @@ def moncalc(map, mon_score):
     Moncalc = 0
     Index = 0
     for xinput in range(len(map)):
+        if xinput == 0 or xinput == len(map)-1: 
         #if in the corner of the game grid add 2
-        if "MON" == map[xinput][0]:
-            Cornerscore += 1
-            Index += 1
-            Moncalc += 2
+            if "MON" == map[xinput][0]:
+                Cornerscore += 1
+                Index += 1
+                Moncalc += 2
 
-        if "MON" == map[xinput][-1]:
-            Cornerscore += 1
-            Index += 1
-            Moncalc += 2
+            if "MON" == map[xinput][-1]:
+                Cornerscore += 1
+                Index += 1
+                Moncalc += 2
         
                 
         #finding all the other MON and adding 1 point
         for yinput in range((len(map[xinput]))):
-            if map[xinput][yinput] == "MON":
-                Index += 1
-                Moncalc += 1
+                if yinput != 0 and yinput != len(map[xinput]) -1:
+                    if map[xinput][yinput] == "MON":
+                        Index += 1
+                        Moncalc += 1
             
     if Cornerscore >= 3:
         Moncalc = 4 * Index
