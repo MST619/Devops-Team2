@@ -27,12 +27,12 @@ def test_chooseBuildingPool():
     with patch('builtins.input', input_mock) as mock_method:
         result = IndexGame.chooseBuildingPool()
     expected = { 
-                "BCH":5, 
-                "HSE":5,
-                "SHP":5,
-                "FAC":5,
+                "BCH":8, 
+                "HSE":8,
+                "SHP":8,
+                "FAC":8,
                 "HWY":0,
-                "MON":5,
+                "MON":8,
                 "PRK":0
             }
     assert mock_method.call_count == 5
@@ -62,12 +62,12 @@ def test_LoadGame():
 def test_remainingBuildings():
     result = IndexGame.remainingBuildings()
     expectedResult = { 
-                "BCH":5, 
-                "HSE":5,
-                "SHP":5,
-                "FAC":5,
+                "BCH":8, 
+                "HSE":8,
+                "SHP":8,
+                "FAC":8,
                 "HWY":0,
-                "MON":5,
+                "MON":8,
                 "PRK":0
             }
     assert result == expectedResult
