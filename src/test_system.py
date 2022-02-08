@@ -6,6 +6,7 @@ import time
 
 def test_ExitAfterGameSetup_Pass1(monkeypatch):
     #test_performance_1.py
+    #ID = #S_TC_1.1.1
     inputList = ["1","1","2","3","4","5","5","5","0","0"]
     start_time = time.time()
     print("Beginning Exit After Game Setup Test (Correct Inputs)")
@@ -28,6 +29,7 @@ def test_ExitAfterGameSetup_Pass1(monkeypatch):
     return timetaken
 def test_ExitAfterGameSetup_Fail1(monkeypatch):
     #test_performance_2.py
+    #ID = #S_TC_1.1.2
     inputList = ["1",
                 "/","-1","a"," ",
                 "1","2","3","4","5",
@@ -58,6 +60,7 @@ def test_ExitAfterGameSetup_Fail1(monkeypatch):
 
 def test_ExitAfterGameSetup_Pass2(monkeypatch):
     #test_performance_3.py
+    #ID = #S_TC_1.2.1
     inputList = ["1",
                 "1","2","3","4","5",
                 "10",
@@ -87,6 +90,7 @@ def test_ExitAfterGameSetup_Pass2(monkeypatch):
 
 def test_ExitAfterGameSetup_Fail2(monkeypatch):
     #test_performance_4.py
+    #ID = #S_TC_1.2.2
     inputList = ["1",
                 "/","-1","a"," ","1","2","3","4","5",
                 "/","-1","a"," ","10",
@@ -116,6 +120,7 @@ def test_ExitAfterGameSetup_Fail2(monkeypatch):
 
 def test_ExitAfterNewGameFirstMove1_Pass(monkeypatch):
     #test_performance_5.py
+    #ID = #S_TC_2.1.1
     inputList = ["1",
                 "1","2","3","4","5",
                 "5","5",
@@ -149,6 +154,7 @@ def test_ExitAfterNewGameFirstMove1_Pass(monkeypatch):
 
 def test_ExitAfterNewGameFirstMove1_Fail(monkeypatch):
     #test_performance_6.py
+    #ID = #S_TC_2.1.2
     inputList = ["1",
                 "/","-1","a"," ","1","2","3","4","5",
                 "/","-1","a"," ","5",
@@ -185,6 +191,7 @@ def test_ExitAfterNewGameFirstMove1_Fail(monkeypatch):
 
 def test_ExitAfterNewGameFirstMove2_Pass(monkeypatch):
     #test_performance_7.py
+    #id = #S_TC_2.2.1
     inputList = ["1",
                 "1","2","3","4","5",
                 "5",
@@ -219,6 +226,7 @@ def test_ExitAfterNewGameFirstMove2_Pass(monkeypatch):
     return timetaken
 def test_ExitAfterNewGameFirstMove2_Fail(monkeypatch):
     #test_performance_8.py
+    #id = #S_TC_2.2.2
     inputList = ["1",
                 "/","-1","a"," ","1","2","3","4","5",
                 "/","-1","a"," ","5",
@@ -254,6 +262,7 @@ def test_ExitAfterNewGameFirstMove2_Fail(monkeypatch):
 
 def test_PlayGameAllChooseBuilding1(monkeypatch):
     #test_performance_9.py
+    #ID = S_TC_3.1
     inputList =["1",
                 "1","2","3","4","5",
                 "2",
@@ -267,7 +276,7 @@ def test_PlayGameAllChooseBuilding1(monkeypatch):
                 "1",
                 "1",
                 "2",
-                "2",
+                "1",
                 "2",
                 "2"]
     start_time = time.time()
@@ -304,6 +313,7 @@ def test_PlayGameAllChooseBuilding1(monkeypatch):
 
 def test_PlayGameAllChooseBuilding2(monkeypatch):
     #test_performance_10.py
+    #ID = #S_TC_3.2
     inputList =["1",
                 "1","2","3","4","5",
                 "2",
@@ -352,10 +362,10 @@ def test_PlayGameAllChooseBuilding2(monkeypatch):
     print("Play Game Always Choose Random Building 2 Test took %s seconds to complete" %timetaken)
     return timetaken
 
-def test_ExitAfterLoadGame_Pass(monkeypatch):
+def test_ExitAfterLoadGame(monkeypatch):
     #test_performance_11.py
+    #ID = #S_TC_4
     inputList = ["2",
-                "2",
                 "0",
                 "0"]
     start_time = time.time()
@@ -377,8 +387,8 @@ def test_ExitAfterLoadGame_Pass(monkeypatch):
 
 def test_LoadGameAfterLoadGame(monkeypatch):
     #test_performance12.py
+    #ID = #S_TC_5
     inputList = ["2",
-                "2",
                 "0",
                 "2"]
     start_time = time.time()
@@ -402,6 +412,7 @@ def test_LoadGameAfterLoadGame(monkeypatch):
 
 def test_SaveNewGameAndLoadGame(monkeypatch):
     #test_performance_13.py
+    #ID = #S_TC_6
     inputList = ["1",
                 "1","2","3","4","5",
                 "5",
@@ -441,6 +452,7 @@ def test_SaveNewGameAndLoadGame(monkeypatch):
     print("Load Game Saved New Game Test took %s seconds to complete" %timetaken)
     return timetaken
 def test_SaveNewGameAndFinishLoadedGame1(monkeypatch):
+    #ID = #S_TC_7.1
     #test_performance_14.py
     inputList = ["1",                   # Select Main Menu Option 1 -> Start new game
                 "1","2","3","4","5",    # Choose Building Pool [Correct  Inputs:(1,2,3,4,5)]
@@ -493,6 +505,7 @@ def test_SaveNewGameAndFinishLoadedGame1(monkeypatch):
 
 def test_SaveNewGameAndFinishLoadedGame2(monkeypatch):
     #test_performance_15.py
+    #ID = #S_TC_7.2
     inputList = ["1",                   # Select Main Menu Option 1 -> Start new game
                 "1","2","3","4","5",    # Choose Building Pool [Correct  Inputs:(1,2,3,4,5)]
                 "3",                    # Choose Grid Size X-Axis [Correct Input:(5)]

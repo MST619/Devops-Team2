@@ -15,7 +15,7 @@ def test_ExitAfterLoadGame_Pass_benchmark(monkeypatch):
     for x in loop:
         for i in range(x):
             start_time = time.time()
-            timetaken = ts.test_ExitAfterLoadGame_Pass(monkeypatch)
+            timetaken = ts.test_ExitAfterLoadGame(monkeypatch)
             runtimings[i]= timetaken
             totaltime += timetaken
         averagetime = totaltime/100
