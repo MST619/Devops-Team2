@@ -103,3 +103,18 @@ def test_buildBuildings(map, selectedBuilding, buildingPool, turn, input, expect
     result = IndexGame.buildBuildings(map, selectedBuilding, buildingPool, turn, input)
     assert result == expected
     
+
+def test_randomBuilding():
+    availabletypes = ['BCH', 'HSE', 'SHP', 'FAC', 'MON']
+    result = IndexGame.randomBuilding({
+                "BCH":8, 
+                "HSE":8,
+                "SHP":8,
+                "FAC":8,
+                "HWY":0,
+                "MON":8,
+                "PRK":0
+            })
+    expected = "BCH", "FAC"
+    if result in availabletypes:
+        assert result == expected
