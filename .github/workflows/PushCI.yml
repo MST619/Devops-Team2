@@ -63,10 +63,18 @@ jobs:
           token: ${{secrets.GITHUB_TOKEN}}
           assignees: ${{github.actor}}
           labels: worflow-failed
-          body: Workflow failed for commit ${{github.sha}} @ ${{github.ref}}       
+          body: Workflow failed for commit ${{github.sha}} @ ${{github.ref}}    
+
+    - name: Download Artifacts
+      uses: actions/download-artifact@v2
+      with:
+        path: artifacts
+
     - name: Publish Unit Test Results
       uses: EnricoMi/publish-unit-test-result-action@v1.24
       if: always()
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        files: dist/report.xml
+        files: artifacts/**/*.xml
+        LOG_LEVEL: DEBUG
+      
