@@ -1,3 +1,4 @@
+from pickle import FALSE
 from unittest import mock
 from _pytest.monkeypatch import monkeypatch
 import IndexGame
@@ -34,7 +35,7 @@ def test_chooseBuildingPool():
                 "PRK":0
             }
     assert mock_method.call_count == 5
-    assert result == expected
+    assert result == expected   
 #2.2.2
 @pytest.mark.parametrize("inputList, expected", [([2,2], [[' ', ' '], [' ', ' ']]), 
                         ([3,4], [[' ', ' ', ' ', ' '], [' ', ' ', ' ', ' '], [' ', ' ', ' ', ' ']]),
@@ -43,13 +44,13 @@ def test_passingbuildingGameList(inputList, expected):
     result = IndexGame.buildGameList(inputList)
     assert result == expected
 
-@pytest.mark.parametrize("inputList, expected", [([-2,2], "Invalid map size, please keep within 40 spaces"), 
-                        ([20,4], "Invalid map size, please keep within 40 spaces"),
-                        ([300,1], "Invalid map size, please keep within 40 spaces")])
-def test_failingbuildingGameList(capfd, inputList, expected):
-    IndexGame.buildGameList(inputList)
-    out, _ = capfd.readouterr()
-    assert expected in out
+# @pytest.mark.parametrize("inputList, expected", [([-2,2], "Invalid map size, please keep within 40 spaces"), 
+#                         ([20,4], "Invalid map size, please keep within 40 spaces"),
+#                         ([300,1], "Invalid map size, please keep within 40 spaces")])
+# def test_failingbuildingGameList(capfd, inputList, expected):
+#     IndexGame.buildGameList(inputList)
+#     out, _ = capfd.readouterr()
+#     assert expected in out
 
 # # 3.1
 # def test_CheckFile():
@@ -65,16 +66,46 @@ def test_failingbuildingGameList(capfd, inputList, expected):
 
 #     assert result == expectedResult
 
+#4.1.1
+def test_remainingBuildings():
+    result = IndexGame.remainingBuildings()
+    expectedResult = { 
+                "BCH":8, 
+                "HSE":8,
+                "SHP":8,
+                "FAC":8,
+                "HWY":0,
+                "MON":8,
+                "PRK":0
+            }
+    assert result == expectedResult
+
+
 #4.2.2
-map = [[' ', ' '], [' ', ' ']]
-@pytest.mark.parametrize("map, input, expected", [(map, "A1", True), (map, "C3", False)])
-def test_positionCheck(map, input, expected):
+map = [[' ', ' ', ' '], [' ', ' ', ' '], [' ', ' ', ' ']]
+@pytest.mark.parametrize("map, input, expected", [(map, "A1", True), (map, "A2", True),
+                        (map, "C3", True), (map, "B2", True)])
+def test_passingpositionCheck(map, input, expected):
     result = IndexGame.positionCheck(map, input)
     assert result == expected
 
-@pytest.mark.parametrize("map, row, column, expected", [(map, 1, "A", True)])
-def test_emptyCheck(map, row, column, expected):
-    result = IndexGame.emptyCheck(map, row, column)
+
+@pytest.mark.parametrize("map, input, expected", [(map, "C4", False), (map, "H6", False),
+                        (map, "D3", False), (map, "N8", False)])
+def test_failingpositionCheck(map, input, expected):
+    result = IndexGame.positionCheck(map, input)
+    assert result == expected
+
+map1 = [[' ', ' ', ' '],[' ', 'BCH', ' '],[' ', ' ', ' ']]
+
+@pytest.mark.parametrize("map1, row, column, expected", [(map1, 1, "A", True), (map1, 2, "A", True)])
+def test_passingemptyCheck(map1, row, column, expected):
+    result = IndexGame.emptyCheck(map1, row, column)
+    assert result == expected
+
+@pytest.mark.parametrize("map1, row, column, expected", [(map1, 2, "B", False)])
+def test_failingemptyCheck(map1, row, column, expected):
+    result = IndexGame.emptyCheck(map1, row, column)
     assert result == expected
 
 @pytest.mark.parametrize("buildingPool, selectedBuildings, expected", [({
@@ -106,7 +137,7 @@ def test_deductBuildingPool(buildingPool, selectedBuildings, expected):
                 "HWY":0,
                 "MON":8,
                 "PRK":0
-            }, 1, "A1", [['BCH', ' '], [' ', ' ']])])
+            }, 1, "A1", [['BCH', ' ', ' '], [' ', ' ', ' '], [' ', ' ', ' ']])])
 def test_buildBuildings(map, selectedBuilding, buildingPool, turn, input, expected, monkeypatch):
     monkeypatch.setattr('builtins.input', lambda _: 'A1')
     result = IndexGame.buildBuildings(map, selectedBuilding, buildingPool, turn, input)
