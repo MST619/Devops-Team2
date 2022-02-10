@@ -36,11 +36,20 @@ def test_chooseBuildingPool():
     assert mock_method.call_count == 5
     assert result == expected
 #2.2.2
-def test_buildingGameList():
-    result = IndexGame.buildGameList([2,2])
-    expectedResult = [[' ', ' '], [' ', ' ']]
+@pytest.mark.parametrize("inputList, expected", [([2,2], [[' ', ' '], [' ', ' ']]), 
+                        ([3,4], [[' ', ' ', ' ', ' '], [' ', ' ', ' ', ' '], [' ', ' ', ' ', ' ']]),
+                        ([5,5], [[' ', ' ', ' ', ' ', ' '], [' ', ' ', ' ', ' ', ' '], [' ', ' ', ' ', ' ', ' '], [' ', ' ', ' ', ' ', ' '], [' ', ' ', ' ', ' ', ' ']])])
+def test_passingbuildingGameList(inputList, expected):
+    result = IndexGame.buildGameList(inputList)
+    assert result == expected
 
-    assert result == expectedResult
+@pytest.mark.parametrize("inputList, expected", [([-2,2], "Invalid map size, please keep within 40 spaces"), 
+                        ([20,4], "Invalid map size, please keep within 40 spaces"),
+                        ([300,1], "Invalid map size, please keep within 40 spaces")])
+def test_failingbuildingGameList(capfd, inputList, expected):
+    IndexGame.buildGameList(inputList)
+    out, _ = capfd.readouterr()
+    assert expected in out
 
 # # 3.1
 # def test_CheckFile():
