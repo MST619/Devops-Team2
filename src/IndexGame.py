@@ -206,12 +206,21 @@ def remainingBuildings():
         return buildingPool
 
 #2.2.2  Create game map list
-def buildGameList(mapSize): 
+def buildGameList(mapSize):
     gameMap = []
-    for x in range(mapSize[0]):
-        holder = " " * int(mapSize[1])
-        gameMap.append(list(holder))
-    return gameMap  
+    #checks if mapsize is valid
+    check = 1
+    for dimensions in mapSize:
+        check = check * dimensions
+    #returns error message and re-collects user input if invalid
+    if check >= 40 or check <= 0:
+        print("Invalid map size, please keep within 40 spaces")
+        buildGameMap()
+    else:    
+        for x in range(mapSize[0]):
+            holder = " " * int(mapSize[1])
+            gameMap.append(list(holder))
+        return gameMap  
 
 def buildGameMap():
     #Build game map
