@@ -49,7 +49,18 @@ jobs:
       run: |
         cd src
         pytest -s --cov -v --junitxml=report.xml
-         
+    - name: Sent message to Teams about Push event
+      uses: ./
+      if: always()
+      with:
+        github-token: ${{ github.token }}
+        webhook-uri: ${{ secrets.MSTEAMS_WEBHOOK }}
+    - name: Publish Unit Test Results
+      uses: EnricoMi/publish-unit-test-result-action@v1.24
+      if: always()
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        files: test-results/**/*.xml
     - if: ${{failure()}}       
       name: Create Issues
       uses: nashmaniac/create-issue-action@v1.1
@@ -58,11 +69,6 @@ jobs:
           token: ${{secrets.GITHUB_TOKEN}}
           assignees: ${{github.actor}}
           labels: worflow-failed
-          body: Workflow failed for commit ${{github.sha}} @ ${{github.ref}}       
+          body: Workflow failed for commit ${{github.sha}} @ ${{github.ref}}    
 
-    - name: Publish Unit Test Results
-      uses: EnricoMi/publish-unit-test-result-action@v1.24
-      if: always()
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        files: src/report.xml
+      
