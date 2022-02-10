@@ -1,4 +1,5 @@
 from os import error
+from sqlite3 import TimeFromTicks
 import pytest
 import time
 
@@ -384,7 +385,7 @@ def test_ExitAfterLoadGame(monkeypatch):
         pass
     timetaken = (time.time() - start_time) 
     print("Exit After Load Gamefile Test took %s seconds to complete" %timetaken)
-
+    return timetaken
 def test_LoadGameAfterLoadGame(monkeypatch):
     #test_performance12.py
     #ID = #S_TC_5
