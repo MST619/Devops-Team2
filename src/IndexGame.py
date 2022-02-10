@@ -14,6 +14,9 @@ S10198398, Jeremiah Long
 # Global variables and imports
 
 
+import random
+
+
 turn = 0
 map = []
 #Building pool dictionary
@@ -118,6 +121,7 @@ def displayGameMenu(turn, map, selectedBuilding):
     #display building remaining
     #display map
     #display 2 randomly selected building via selectedBuilding
+    randomBuilding()
     #display game menu options
     
     print("Under development")
@@ -141,10 +145,17 @@ def chooseBuildingPool():
     print(buildingPool)
     return buildingPool
 
-def randomBuilding():
-    randomSelectedBuilding = []
-    #Return selected building in a list
-    return randomSelectedBuilding
+def randomBuilding(buildingPool):
+    availablebuildingtypes = []
+    for building, buildingcount in buildingPool.items():
+        if buildingcount != 0:
+            availablebuildingtypes.append(building)
+    randomBuilding1 = random.choice(availablebuildingtypes)
+    randomBuilding2 = random.choice(availablebuildingtypes)
+    print('1. Build a {}'.format(randomBuilding1))
+    print('2. Build a {}'.format(randomBuilding2))
+    return randomBuilding1, randomBuilding2
+    
 
 def positionCheck(map, input):
     letter = False
