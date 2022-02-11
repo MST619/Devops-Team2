@@ -57,9 +57,46 @@ columnmapping = {
 }
 mapSize = [0,0]  #X-axis, Y-axis
 
+MainMenuData = \
+['Welcome, mayor of Simp City!',
+'------------------------------',
+'1. Start new game',
+'2. Load saved game',
+'3. Show high scores\n'
+'0. Exit']
+
 # General functions
-def displayMainMenu():
-    return True
+def displayMainMenu(): # To display the main menu
+    for i in range(len(MainMenuData)):
+            print(MainMenuData[i])
+   
+def runMainMenu(): # To run the main menu options
+    result = 1
+    while result != 0:
+        displayMainMenu()
+        userInput = input('Enter your option: ')
+        result = MainMenuSelection(userInput)
+
+def MainMenuSelection(userInput): # To validate the user main menu options
+        if userInput == "0":
+            exit = exitGame()
+            print(exit)
+            return 0
+        elif userInput == "1":
+            newGame()
+        elif userInput == "2":
+            print("Load a save file\n\n", end = '')
+            loadGame()
+        elif userInput == "3":
+            print("Display Leaderboard\n\n", end = '')
+            leaderBoard()
+        else:
+            print("Invalid input!\n", end = '')
+    
+
+def exitGame(): # To exit the game once the user has entered 0
+    GameEnd = "Thanks for playing!"
+    return GameEnd
 
 def checkUserInputInt(value): #to check if the user input is able to conver to int
     try:
@@ -374,3 +411,7 @@ def mainMenu():
         else: 
             print("Please enter a valid user input")
 
+try:
+    runMainMenu()
+except:
+    pass
